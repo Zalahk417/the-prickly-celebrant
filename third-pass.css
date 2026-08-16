@@ -16,6 +16,8 @@
 /* Make the twin pathway feel more like a real path: a visible interior, irregular width and occasional cross stones. */
 .journey{isolation:isolate}
 .journey::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 10%,rgba(241,43,36,.05),transparent 23%),radial-gradient(circle at 42% 55%,rgba(24,19,15,.05),transparent 27%)}
+.path-ghost{opacity:1!important;stroke:rgba(245,227,189,.6)!important;stroke-width:clamp(60px,14vw,230px)!important;stroke-dasharray:none!important;filter:drop-shadow(0 10px 14px rgba(24,19,15,.05))}
+.path-live{opacity:0!important}
 .path-rail.rail-ghost{stroke-width:2;stroke-dasharray:1 15}
 .path-rail.rail-live{stroke-width:3.2}
 .stone{transition:background .24s ease,transform .24s ease,box-shadow .24s ease,filter .24s ease}
