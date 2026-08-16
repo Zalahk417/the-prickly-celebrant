@@ -46,32 +46,45 @@ document.querySelectorAll('[data-service]').forEach((button) => {
   });
 });
 
-// Custom cursor for pointer devices.
+// Custom cursor for pointer devices. It sleeps whenever the pointer is stationary.
 const cursor = document.querySelector('.cursor');
 if (cursor && window.matchMedia('(pointer:fine)').matches && !reducedMotion) {
   let pointerX = -100;
   let pointerY = -100;
   let cursorX = -100;
   let cursorY = -100;
+  let cursorRunning = false;
+
+  const animateCursor = () => {
+    cursorX += (pointerX - cursorX) * 0.2;
+    cursorY += (pointerY - cursorY) * 0.2;
+    cursor.style.left = `${cursorX}px`;
+    cursor.style.top = `${cursorY}px`;
+
+    if (Math.abs(pointerX - cursorX) > 0.12 || Math.abs(pointerY - cursorY) > 0.12) {
+      requestAnimationFrame(animateCursor);
+    } else {
+      cursorX = pointerX;
+      cursorY = pointerY;
+      cursor.style.left = `${cursorX}px`;
+      cursor.style.top = `${cursorY}px`;
+      cursorRunning = false;
+    }
+  };
 
   window.addEventListener('pointermove', (event) => {
     pointerX = event.clientX;
     pointerY = event.clientY;
+    if (!cursorRunning) {
+      cursorRunning = true;
+      requestAnimationFrame(animateCursor);
+    }
   }, { passive: true });
 
   document.querySelectorAll('a, button, .gallery-card').forEach((el) => {
     el.addEventListener('pointerenter', () => cursor.classList.add('hover'));
     el.addEventListener('pointerleave', () => cursor.classList.remove('hover'));
   });
-
-  const animateCursor = () => {
-    cursorX += (pointerX - cursorX) * 0.18;
-    cursorY += (pointerY - cursorY) * 0.18;
-    cursor.style.left = `${cursorX}px`;
-    cursor.style.top = `${cursorY}px`;
-    requestAnimationFrame(animateCursor);
-  };
-  animateCursor();
 }
 
 // Scroll world.
