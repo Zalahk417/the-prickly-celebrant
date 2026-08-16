@@ -1,78 +1,215 @@
-const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
 
+// Reveal content only when it enters the page.
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
   });
-}, { threshold: 0.14 });
+}, { threshold: 0.12, rootMargin: '0px 0px -4% 0px' });
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-const journey = document.querySelector('.journey');
-const stonesWrap = document.querySelector('.stones');
-const svgPath = document.querySelector('#journeyPath');
-const progress = document.querySelector('.path-progress');
-const parallaxEls = [...document.querySelectorAll('.parallax')];
+// Mobile menu.
+const menu = document.querySelector('#mobile-menu');
+const menuToggle = document.querySelector('.menu-toggle');
+const menuClose = document.querySelector('.menu-close');
 
-function createStones() {
-  if (!journey || !stonesWrap || !svgPath) return;
-  const total = svgPath.getTotalLength();
-  const count = window.innerWidth < 850 ? 34 : 52;
+function setMenu(open) {
+  if (!menu || !menuToggle) return;
+  menu.classList.toggle('open', open);
+  menu.setAttribute('aria-hidden', String(!open));
+  menuToggle.setAttribute('aria-expanded', String(open));
+  document.body.classList.toggle('menu-open', open);
+}
+
+menuToggle?.addEventListener('click', () => setMenu(true));
+menuClose?.addEventListener('click', () => setMenu(false));
+menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setMenu(false);
+});
+
+// Service descriptions.
+const serviceDetail = document.querySelector('.service-detail');
+document.querySelectorAll('[data-service]').forEach((button) => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('[data-service]').forEach((item) => item.classList.remove('active'));
+    button.classList.add('active');
+    if (serviceDetail) serviceDetail.textContent = button.dataset.service || '';
+  });
+});
+
+// Custom cursor for pointer devices.
+const cursor = document.querySelector('.cursor');
+if (cursor && window.matchMedia('(pointer:fine)').matches && !reducedMotion) {
+  let pointerX = -100;
+  let pointerY = -100;
+  let cursorX = -100;
+  let cursorY = -100;
+
+  window.addEventListener('pointermove', (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+  }, { passive: true });
+
+  document.querySelectorAll('a, button, .gallery-card').forEach((el) => {
+    el.addEventListener('pointerenter', () => cursor.classList.add('hover'));
+    el.addEventListener('pointerleave', () => cursor.classList.remove('hover'));
+  });
+
+  const animateCursor = () => {
+    cursorX += (pointerX - cursorX) * 0.18;
+    cursorY += (pointerY - cursorY) * 0.18;
+    cursor.style.left = `${cursorX}px`;
+    cursor.style.top = `${cursorY}px`;
+    requestAnimationFrame(animateCursor);
+  };
+  animateCursor();
+}
+
+// Scroll world.
+const header = document.querySelector('[data-header]');
+const journey = document.querySelector('.journey');
+const path = document.querySelector('#journeyPath');
+const stonesWrap = document.querySelector('.stones');
+const parallaxElements = [...document.querySelectorAll('.parallax')];
+const markerPath = document.querySelector('#markerPath');
+const markerArt = document.querySelector('.marker-art');
+const gallerySection = document.querySelector('[data-gallery-scroll]');
+const galleryTrack = document.querySelector('[data-gallery-track]');
+
+let pathLength = 0;
+let markerLength = 0;
+let lastScrollY = window.scrollY;
+let ticking = false;
+
+function setUpPath() {
+  if (!journey || !path || !stonesWrap) return;
+
+  pathLength = path.getTotalLength();
+  path.style.strokeDasharray = `${pathLength}`;
+  path.style.strokeDashoffset = `${pathLength}`;
+
+  const count = window.innerWidth < 640 ? 48 : window.innerWidth < 980 ? 58 : 72;
   stonesWrap.innerHTML = '';
 
-  for (let i = 0; i < count; i++) {
-    const p = svgPath.getPointAtLength((i / (count - 1)) * total);
-    const stone = document.createElement('div');
+  for (let i = 0; i < count; i += 1) {
+    const distance = (i / (count - 1)) * pathLength;
+    const point = path.getPointAtLength(distance);
+    const stone = document.createElement('span');
+    const rotation = -25 + ((i * 37) % 51);
+    const scale = 0.72 + ((i * 19) % 29) / 100;
+
     stone.className = 'stone';
-    stone.style.left = `${p.x / 10}%`;
-    stone.style.top = `${p.y / 38}%`;
-    stone.style.setProperty('--r', `${-22 + Math.random() * 44}deg`);
-    stone.style.setProperty('--s', `${0.78 + Math.random() * 0.38}`);
-    stone.dataset.i = i;
+    stone.style.left = `${(point.x / 1000) * 100}%`;
+    stone.style.top = `${(point.y / 5200) * 100}%`;
+    stone.style.setProperty('--r', `${rotation}deg`);
+    stone.style.setProperty('--s', scale.toFixed(2));
+    stone.dataset.index = String(i);
     stonesWrap.appendChild(stone);
   }
 }
 
-function updateScrollWorld() {
-  if (reduced) return;
-  const y = window.scrollY;
+function setUpMarker() {
+  if (!markerPath) return;
+  markerLength = markerPath.getTotalLength();
+  markerPath.style.strokeDasharray = `${markerLength}`;
+  markerPath.style.strokeDashoffset = `${markerLength}`;
+}
 
-  parallaxEls.forEach((el) => {
+function updateHeader(scrollY) {
+  if (!header) return;
+  header.classList.toggle('scrolled', scrollY > 35);
+
+  const movingDown = scrollY > lastScrollY;
+  const shouldHide = movingDown && scrollY > 260 && !document.body.classList.contains('menu-open');
+  header.classList.toggle('header-hidden', shouldHide);
+  lastScrollY = scrollY;
+}
+
+function updateParallax() {
+  if (reducedMotion) return;
+
+  parallaxElements.forEach((el) => {
     const speed = Number(el.dataset.speed || 0);
     const rect = el.getBoundingClientRect();
-    const centre = rect.top + rect.height / 2 - window.innerHeight / 2;
-    const shift = Math.max(-90, Math.min(90, -centre * speed));
-    el.style.transform = `translate3d(0, ${shift}px, 0)`;
+    const centreDelta = rect.top + rect.height / 2 - window.innerHeight / 2;
+    const shift = clamp(-centreDelta * speed, -115, 115);
+    el.style.translate = `0 ${shift}px`;
   });
+}
 
-  if (!journey) return;
+function updateJourney() {
+  if (!journey || !path || !pathLength) return;
+
   const rect = journey.getBoundingClientRect();
-  const travel = journey.offsetHeight - window.innerHeight;
-  const local = Math.min(1, Math.max(0, -rect.top / Math.max(1, travel)));
-  if (progress) progress.style.height = `${local * 100}%`;
+  const start = window.innerHeight * 0.55;
+  const distance = journey.offsetHeight - window.innerHeight * 0.35;
+  const progress = clamp((start - rect.top) / Math.max(distance, 1));
 
-  const stones = [...document.querySelectorAll('.stone')];
-  const activeCount = Math.floor(local * stones.length);
-  stones.forEach((stone, i) => stone.classList.toggle('active', i <= activeCount));
+  path.style.strokeDashoffset = `${pathLength * (1 - progress)}`;
+
+  const stones = stonesWrap ? [...stonesWrap.children] : [];
+  const activeThrough = progress * (stones.length - 1);
+  stones.forEach((stone, index) => {
+    stone.classList.toggle('active', index <= activeThrough);
+  });
 }
 
-let ticking = false;
+function updateMarker() {
+  if (!markerPath || !markerArt || !markerLength) return;
+
+  const rect = markerArt.getBoundingClientRect();
+  const progress = clamp((window.innerHeight * 0.72 - rect.top) / (window.innerHeight * 0.8));
+  markerPath.style.strokeDashoffset = `${markerLength * (1 - progress)}`;
+}
+
+function updateGallery() {
+  if (!gallerySection || !galleryTrack || reducedMotion) return;
+
+  const rect = gallerySection.getBoundingClientRect();
+  const travel = gallerySection.offsetHeight - window.innerHeight;
+  const progress = clamp(-rect.top / Math.max(1, travel));
+  const maxShift = Math.max(0, galleryTrack.scrollWidth - window.innerWidth + window.innerWidth * 0.07);
+  galleryTrack.style.transform = `translate3d(${-maxShift * progress}px,0,0)`;
+}
+
+function updateScrollWorld() {
+  const scrollY = window.scrollY;
+  updateHeader(scrollY);
+  updateParallax();
+  updateJourney();
+  updateMarker();
+  updateGallery();
+}
+
 function onScroll() {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      updateScrollWorld();
-      ticking = false;
-    });
-    ticking = true;
-  }
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    updateScrollWorld();
+    ticking = false;
+  });
 }
 
-createStones();
+setUpPath();
+setUpMarker();
 updateScrollWorld();
+
 window.addEventListener('scroll', onScroll, { passive: true });
+let resizeTimer;
 window.addEventListener('resize', () => {
-  createStones();
-  updateScrollWorld();
+  window.clearTimeout(resizeTimer);
+  resizeTimer = window.setTimeout(() => {
+    setUpPath();
+    setUpMarker();
+    updateScrollWorld();
+  }, 120);
 });
