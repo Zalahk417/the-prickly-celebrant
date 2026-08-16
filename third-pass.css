@@ -1,0 +1,132 @@
+/* Third-pass creative direction: denser pacing, scene changes, image rivers, overlaps */
+
+:root{
+  --mouse-x:50vw;
+  --mouse-y:50vh;
+}
+
+/* Give the page a more authored, changing-rules rhythm. */
+.hero{isolation:isolate}
+.hero::before{width:min(64vw,980px);height:min(64vw,980px);right:-24vw;top:-28vw;border-color:rgba(24,19,15,.12)}
+.hero::after{width:min(38vw,560px);height:min(38vw,560px);right:0;top:-2vw;border-color:rgba(241,43,36,.35)}
+.hero-stage::after{content:"LOVE";position:absolute;left:-18%;bottom:-4%;z-index:0;font:900 clamp(120px,18vw,300px)/.72 var(--serif);letter-spacing:-.1em;color:transparent;-webkit-text-stroke:1px rgba(24,19,15,.13);transform:rotate(-7deg);pointer-events:none}
+.hero-art{z-index:3}
+.hero-note{z-index:6}
+
+/* Make the twin pathway feel more like a real path: a visible interior, irregular width and occasional cross stones. */
+.journey{isolation:isolate}
+.journey::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 10%,rgba(241,43,36,.05),transparent 23%),radial-gradient(circle at 42% 55%,rgba(24,19,15,.05),transparent 27%)}
+.path-rail.rail-ghost{stroke-width:2;stroke-dasharray:1 15}
+.path-rail.rail-live{stroke-width:3.2}
+.stone{transition:background .24s ease,transform .24s ease,box-shadow .24s ease,filter .24s ease}
+.stone.active{filter:saturate(1.08)}
+.stone.cross-stone{width:clamp(22px,2.8vw,42px);opacity:.82;z-index:-1;box-shadow:2px 3px 0 rgba(24,19,15,.12)}
+
+/* Push alternating stops further across the path so art and content visibly interrupt it. */
+@media(min-width:981px){
+  .journey-stop[data-stop="1"] .stop-copy{transform:translateX(-3vw) rotate(-1deg)}
+  .journey-stop[data-stop="1"] .stop-art{transform:translateX(2vw) rotate(2deg)}
+  .journey-stop[data-stop="2"] .stop-art{transform:translateX(-2vw) rotate(-4deg)}
+  .journey-stop[data-stop="2"] .stop-copy{transform:translateX(3vw) rotate(1deg)}
+  .journey-stop[data-stop="3"] .stop-copy{transform:translateX(-2vw) rotate(.8deg)}
+  .journey-stop[data-stop="3"] .stop-art{transform:translateX(3vw) rotate(-1.5deg) scale(1.06)}
+  .journey-stop[data-stop="4"] .marker-art{transform:translateX(-2vw) rotate(2deg) scale(1.04)}
+  .journey-stop[data-stop="5"] .stop-copy{transform:translateX(-3vw) rotate(-.7deg)}
+  .journey-stop[data-stop="5"] .stop-art{transform:translateX(2vw) rotate(3deg) scale(1.05)}
+}
+
+/* Scroll position badge: deliberately graphic, like editorial marginalia. */
+.scene-progress{position:fixed;right:18px;top:50%;z-index:110;transform:translateY(-50%);display:grid;justify-items:center;gap:8px;mix-blend-mode:multiply;pointer-events:none}
+.scene-progress strong{font:900 30px/1 var(--serif);letter-spacing:-.06em;color:var(--red)}
+.scene-progress small{writing-mode:vertical-rl;transform:rotate(180deg);font:500 8px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.scene-progress-track{width:2px;height:94px;background:rgba(24,19,15,.18);position:relative;overflow:hidden}
+.scene-progress-fill{position:absolute;left:0;right:0;top:0;height:0;background:var(--ink)}
+
+/* Big mid-page rule break. */
+.rule-break{height:190vh;background:var(--ink);color:var(--cream);position:relative;overflow:clip;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.rule-break-sticky{height:100vh;position:sticky;top:0;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:2vw;padding:7vw 5vw;overflow:hidden}
+.rule-break-copy{position:relative;z-index:4;align-self:center}
+.rule-break-copy .kicker{color:var(--red)}
+.rule-break-copy h2{font:900 clamp(72px,11.4vw,186px)/.72 var(--serif);letter-spacing:-.085em;margin:20px 0 28px;text-transform:uppercase}
+.rule-break-copy h2 em{display:block;color:var(--red);font-style:italic;transform:translateX(8vw) rotate(-3deg)}
+.rule-break-copy p{font-size:clamp(17px,1.6vw,23px);line-height:1.45;max-width:580px}
+.rule-break-art{position:relative;z-index:3;width:min(48vw,720px);justify-self:end;margin:0;transform:rotate(5deg)}
+.rule-break-art img{border:1px solid var(--cream);box-shadow:16px 16px 0 var(--red);background:var(--cream)}
+.rule-break-ghost{position:absolute;left:-4vw;bottom:-5vw;font:900 clamp(170px,31vw,520px)/.68 var(--serif);letter-spacing:-.11em;color:transparent;-webkit-text-stroke:1px rgba(255,241,214,.12);white-space:nowrap;z-index:1;transform:translate3d(var(--ghost-x,0),var(--ghost-y,0),0) rotate(-4deg)}
+.rule-break-stamp{position:absolute;right:4vw;top:9vw;width:clamp(100px,12vw,180px);aspect-ratio:1;border:2px solid var(--red);border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--red);font:700 11px/1.25 var(--mono);letter-spacing:.08em;transform:rotate(12deg);z-index:5;animation:stampSpin 18s linear infinite}
+@keyframes stampSpin{to{rotate:360deg}}
+
+/* Art physically crosses between sections. */
+.cactus-overflow{height:0;position:relative;z-index:30;pointer-events:none}
+.cactus-overflow figure{position:absolute;margin:0;width:min(31vw,470px);right:7vw;top:-150px;transform:rotate(-8deg)}
+.cactus-overflow img{border:1px solid var(--ink);box-shadow:12px 12px 0 var(--red)}
+
+/* Moving image river: repeated, dense, intentionally excessive. */
+.image-river{background:var(--cream);padding:11vw 0 12vw;overflow:hidden;position:relative;border-bottom:1px solid var(--ink)}
+.image-river-header{padding:0 5vw 7vw;display:grid;grid-template-columns:1fr .65fr;gap:5vw;align-items:end}
+.image-river-header h2{font:900 clamp(62px,9vw,150px)/.78 var(--serif);letter-spacing:-.075em;margin:14px 0 0}
+.image-river-header p:last-child{font-size:clamp(17px,1.6vw,23px);line-height:1.5;max-width:540px}
+.river-row{display:flex;width:max-content;gap:18px;padding:11px 0;will-change:transform}
+.river-row.row-a{animation:riverLeft 38s linear infinite}
+.river-row.row-b{animation:riverRight 46s linear infinite;margin-left:-35vw}
+.river-card{width:clamp(250px,27vw,430px);flex:0 0 auto;margin:0;position:relative;border:1px solid var(--ink);background:var(--paper);box-shadow:7px 8px 0 var(--ink);overflow:hidden}
+.river-card:nth-child(3n+1){transform:rotate(-2deg)}
+.river-card:nth-child(3n+2){transform:rotate(1.6deg)}
+.river-card:nth-child(4n){box-shadow:7px 8px 0 var(--red)}
+.river-card img{width:100%;aspect-ratio:1.15;object-fit:cover;transition:transform .4s cubic-bezier(.2,.75,.2,1),filter .4s ease}
+.river-card:hover img{transform:scale(1.07) rotate(-1deg);filter:saturate(1.08)}
+.river-card figcaption{display:flex;justify-content:space-between;gap:15px;padding:11px 13px;font:500 9px/1.3 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+@keyframes riverLeft{to{transform:translateX(-50%)}}
+@keyframes riverRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+/* Full-screen statement that snaps the palette again. */
+.statement-slam{min-height:105vh;background:var(--red);position:relative;display:grid;place-items:center;padding:8vw 5vw;overflow:hidden;border-bottom:1px solid var(--ink)}
+.statement-slam h2{position:relative;z-index:3;font:900 clamp(84px,15vw,250px)/.68 var(--serif);letter-spacing:-.095em;text-align:center;margin:0;text-transform:uppercase}
+.statement-slam h2 span{display:block}
+.statement-slam h2 .outline{color:transparent;-webkit-text-stroke:2px var(--ink);transform:translateX(-5vw)}
+.statement-slam h2 .cream{color:var(--cream);transform:translateX(6vw) rotate(-2deg)}
+.statement-slam .orbit{position:absolute;border:1px solid rgba(24,19,15,.3);border-radius:50%;width:min(68vw,980px);aspect-ratio:1;animation:orbitPulse 7s ease-in-out infinite}
+.statement-slam .orbit::after{content:"✦";position:absolute;right:5%;top:12%;font:900 54px var(--serif);color:var(--cream)}
+@keyframes orbitPulse{50%{scale:1.08;rotate:7deg}}
+
+/* Cursor-reactive artwork without fighting the existing parallax transforms. */
+.kinetic-img{transform:perspective(1000px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) scale(var(--tilt-scale,1));transition:transform .22s ease;will-change:transform}
+.kinetic-img.is-hovered{--tilt-scale:1.025}
+
+/* More disruptive manifesto and finale. */
+.manifesto{position:relative;isolation:isolate}
+.manifesto::before{content:"YEP.";position:absolute;left:-2vw;bottom:-4vw;z-index:0;font:900 clamp(180px,29vw,460px)/.7 var(--serif);letter-spacing:-.1em;color:transparent;-webkit-text-stroke:1px rgba(24,19,15,.18);transform:rotate(-6deg)}
+.manifesto-copy,.manifesto-art{position:relative;z-index:3}
+.finale{position:relative;overflow:hidden}
+.finale::before{content:"HELLO";position:absolute;right:-5vw;top:-2vw;font:900 clamp(170px,26vw,430px)/.7 var(--serif);letter-spacing:-.1em;color:transparent;-webkit-text-stroke:1px rgba(24,19,15,.09);transform:rotate(8deg);pointer-events:none}
+
+@media(max-width:980px){
+  .scene-progress{display:none}
+  .rule-break{height:auto;min-height:100vh}
+  .rule-break-sticky{height:auto;min-height:100vh;position:relative;grid-template-columns:1fr;padding:110px 20px 120px;gap:42px}
+  .rule-break-copy h2 em{transform:translateX(4vw) rotate(-3deg)}
+  .rule-break-art{width:min(88vw,650px);justify-self:center}
+  .rule-break-stamp{top:30px;right:22px}
+  .cactus-overflow figure{width:min(52vw,390px);right:3vw;top:-110px}
+  .image-river-header{grid-template-columns:1fr;padding:90px 20px 55px}
+  .river-card{width:min(70vw,370px)}
+}
+
+@media(max-width:640px){
+  .hero-stage::after{font-size:34vw;left:-8%;bottom:4%}
+  .rule-break-copy h2{font-size:23vw}
+  .rule-break-art{width:90vw}
+  .rule-break-ghost{font-size:54vw}
+  .cactus-overflow figure{width:62vw;right:-8vw;top:-75px}
+  .image-river{padding-bottom:100px}
+  .river-row{gap:12px}
+  .river-card{width:74vw}
+  .statement-slam{min-height:90vh;padding:90px 15px}
+  .statement-slam h2{font-size:24vw}
+  .statement-slam h2 .outline,.statement-slam h2 .cream{transform:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .rule-break-stamp,.river-row,.statement-slam .orbit{animation:none!important}
+  .kinetic-img{transform:none!important}
+}
