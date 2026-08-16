@@ -2,6 +2,12 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp01 = (n) => Math.max(0, Math.min(1, n));
 
+  // script.js injects second-pass.css at runtime. Move the third-pass link after it so
+  // the newest creative-direction layer always wins equal-specificity cascade rules.
+  const thirdPassLink = document.querySelector('link[href="third-pass.css"]');
+  const secondPassLink = document.querySelector('link[data-second-pass]');
+  if (thirdPassLink && secondPassLink) document.head.appendChild(thirdPassLink);
+
   // Fixed editorial scroll marker.
   if (!document.querySelector('.scene-progress')) {
     const meter = document.createElement('div');
