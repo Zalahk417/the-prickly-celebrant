@@ -2,130 +2,251 @@
 <html lang="en-AU">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#fff0d0">
-  <meta name="description" content="The Prickly Celebrant — delightfully offbeat ceremonies, destination weddings, MC services, voiceover and bespoke invitation design.">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff1d6">
+  <meta name="description" content="The Prickly Celebrant — delightfully offbeat weddings, ceremonies, MC services, voiceover and bespoke invitation design.">
+  <meta property="og:title" content="The Prickly Celebrant — Delightfully Offbeat">
+  <meta property="og:description" content="Warm ceremonies. Sharp humour. Zero beige wedding energy.">
+  <meta property="og:image" content="assets/01_infinity_couple.jpeg">
   <title>The Prickly Celebrant — Delightfully Offbeat</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="wordmark" href="#top">THE PRICKLY CELEBRANT</a>
-    <nav>
-      <a href="#story">about</a>
+  <div class="cursor" aria-hidden="true"><span>✦</span></div>
+
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#top" aria-label="The Prickly Celebrant home">
+      <span class="wordmark-the">THE</span>
+      <span>PRICKLY</span>
+      <span class="wordmark-small">CELEBRANT</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#story">the story</a>
       <a href="#services">services</a>
-      <a href="#contact" class="nav-cta">say hello</a>
+      <a href="#vibe">the vibe</a>
+      <a href="#contact" class="nav-cta">say hello ↗</a>
     </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">menu</button>
   </header>
 
+  <aside class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <button class="menu-close" type="button" aria-label="Close menu">×</button>
+    <p class="kicker">THE PRICKLY MENU</p>
+    <a href="#story"><span>01</span> the story</a>
+    <a href="#services"><span>02</span> services</a>
+    <a href="#vibe"><span>03</span> the vibe</a>
+    <a href="#contact"><span>04</span> say hello</a>
+    <div class="menu-scribble" aria-hidden="true">⌁♡⌁</div>
+  </aside>
+
   <main id="top">
-    <section class="hero world-section">
-      <div class="hero-copy reveal">
-        <p class="kicker">DELIGHTFULLY OFFBEAT · GERALDTON & BEYOND</p>
-        <h1>Love is<br><em>never</em><br>beige.</h1>
-        <p class="lede">Warm ceremonies, sharp humour and exactly enough chaos to make the whole thing feel alive.</p>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <p class="kicker">WEDDINGS · CEREMONIES · MC · VOICE · DESIGN</p>
+          <h1>Love is<br><em>never</em><br>beige.</h1>
+          <p class="lede">Warm ceremonies. Sharp humour. Zero copy-and-paste wedding energy.</p>
+          <a class="text-link" href="#story">follow the prickly path <span>↓</span></a>
+        </div>
+
+        <div class="hero-stage" aria-label="Prickly Celebrant illustrated artwork">
+          <figure class="hero-art parallax" data-speed="0.13">
+            <img src="assets/01_infinity_couple.jpeg" alt="Two illustrated heads joined by an infinity loop of flowering cacti">
+          </figure>
+          <div class="hero-note parallax" data-speed="-0.08">soft hearts.<br>sharp edges.</div>
+          <div class="hero-doodle d-heart" aria-hidden="true">♡</div>
+          <div class="hero-doodle d-star" aria-hidden="true">✦</div>
+        </div>
       </div>
-      <div class="hero-visual parallax" data-speed="0.12">
-        <img src="assets/cactus-candles.jpeg" alt="Illustrated cactus arrangement with candles">
+
+      <div class="hero-bottom" aria-hidden="true">
+        <span>SCROLL TO WANDER</span>
+        <div class="hero-line"></div>
+        <span>↓</span>
       </div>
-      <div class="scroll-cue">follow the path ↓</div>
     </section>
 
-    <section class="journey" id="story">
-      <svg class="path-svg" viewBox="0 0 1000 3800" preserveAspectRatio="none" aria-hidden="true">
-        <path id="journeyPath" d="M500 0 C230 270, 770 470, 510 760 C210 1090, 760 1300, 430 1600 C180 1850, 780 2120, 510 2440 C190 2780, 800 3070, 470 3380 C350 3490, 480 3650, 500 3800"/>
+    <section class="path-intro" id="story">
+      <div class="path-intro-copy reveal">
+        <p class="kicker">THE LONG WAY AROUND</p>
+        <h2>Your ceremony shouldn’t feel like everyone else’s.</h2>
+        <p>So this website doesn’t either. Follow the stones. There are stories, services and a few wonderfully unnecessary detours on the way down.</p>
+      </div>
+      <div class="path-intro-art parallax" data-speed="0.08">
+        <img src="assets/02_desert_path.jpeg" alt="Illustrated desert path winding between cacti">
+      </div>
+      <div class="red-arrow" aria-hidden="true">↘</div>
+    </section>
+
+    <section class="journey" aria-label="The Prickly path">
+      <div class="journey-bg-word bg-one" aria-hidden="true">PRICKLY</div>
+      <div class="journey-bg-word bg-two" aria-hidden="true">OFFBEAT</div>
+
+      <svg class="path-svg" viewBox="0 0 1000 5200" preserveAspectRatio="none" aria-hidden="true">
+        <path class="path-ghost" d="M510 0 C175 360 820 610 500 990 C190 1360 815 1650 420 2040 C145 2330 825 2720 510 3110 C210 3480 780 3750 430 4120 C190 4390 720 4700 500 5200"/>
+        <path class="path-live" id="journeyPath" d="M510 0 C175 360 820 610 500 990 C190 1360 815 1650 420 2040 C145 2330 825 2720 510 3110 C210 3480 780 3750 430 4120 C190 4390 720 4700 500 5200"/>
       </svg>
-      <div class="path-progress" aria-hidden="true"></div>
       <div class="stones" aria-hidden="true"></div>
 
-      <article class="journey-stop stop-left reveal" data-stop="1">
-        <span class="stop-no">01</span>
-        <div class="stop-card">
+      <article class="journey-stop stop-left" data-stop="1">
+        <div class="stop-copy reveal">
+          <span class="stop-number">01</span>
           <p class="kicker">THE WHOLE POINT</p>
-          <h2>A ceremony that actually sounds like you.</h2>
-          <p>No template energy. No wedding-factory script. Your stories, your people, your cultures and your particular flavour of weird.</p>
+          <h3>It should sound like <em>you</em>.</h3>
+          <p>No wedding-factory script. No weirdly formal stranger voice. Your stories, your people, your culture and your particular flavour of weird.</p>
+          <div class="micro-note">meaningful ≠ serious all the time</div>
         </div>
-        <img class="stop-art parallax" data-speed="0.07" src="assets/infinity-couple.jpeg" alt="Two illustrated faces connected by an infinity loop of cacti">
+        <figure class="stop-art art-cropped parallax" data-speed="0.08">
+          <img src="assets/04_cactus_candles.jpeg" alt="Cactus garden with candles and small red doodles">
+        </figure>
       </article>
 
-      <article class="journey-stop stop-right reveal" data-stop="2">
-        <span class="stop-no">02</span>
-        <img class="stop-art parallax" data-speed="-0.05" src="assets/ring-hands.jpeg" alt="Illustrated hands wearing cactus rings">
-        <div class="stop-card hot">
-          <p class="kicker">NO TED TALK REQUIRED</p>
-          <h2>Meaningful can still be funny.</h2>
-          <p>Heartfelt without becoming heavy. Funny without hijacking the day. Stylish without forgetting the humans.</p>
+      <article class="journey-stop stop-right" data-stop="2">
+        <figure class="stop-art tilted-left parallax" data-speed="-0.07">
+          <img src="assets/05_ring_hands.jpeg" alt="Two illustrated hands wearing tiny cactus rings">
+        </figure>
+        <div class="stop-copy red-card reveal">
+          <span class="stop-number">02</span>
+          <p class="kicker">THE BALANCE</p>
+          <h3>Heartfelt.<br>Not heavy.</h3>
+          <p>Funny without turning your ceremony into stand-up. Emotional without making everyone feel trapped inside a three-hour speech.</p>
         </div>
       </article>
 
-      <article class="journey-stop stop-left reveal" data-stop="3">
-        <span class="stop-no">03</span>
-        <div class="stop-card dark">
+      <article class="journey-stop stop-left" data-stop="3">
+        <div class="stop-copy black-card reveal">
+          <span class="stop-number">03</span>
           <p class="kicker">DESTINATION + CULTURAL</p>
-          <h2>Bring the whole world into the room.</h2>
+          <h3>Bring the whole world into the room.</h3>
           <p>Multi-family, multi-tradition and multi-place celebrations handled with curiosity, confidence and care.</p>
         </div>
-        <img class="stop-art parallax" data-speed="0.09" src="assets/desert-path.jpeg" alt="Illustrated desert path with cacti">
+        <figure class="stop-art wide-art parallax" data-speed="0.1">
+          <img src="assets/08_cactus_garden.jpeg" alt="Dense illustrated cactus garden with flowering red accents">
+        </figure>
       </article>
 
-      <article class="journey-stop stop-right reveal" data-stop="4" id="services">
-        <span class="stop-no">04</span>
-        <img class="stop-art parallax" data-speed="-0.08" src="assets/marker-hand.jpeg" alt="Illustrated hand holding a red marker">
-        <div class="stop-card">
+      <article class="journey-stop service-stop stop-right" data-stop="4" id="services">
+        <figure class="stop-art marker-art parallax" data-speed="-0.09">
+          <img src="assets/07_marker_hand.jpeg" alt="Illustrated hand holding a red marker">
+          <svg class="marker-line" viewBox="0 0 600 240" aria-hidden="true">
+            <path id="markerPath" d="M12 40 C130 5 150 165 260 120 C360 78 395 230 584 178"/>
+          </svg>
+        </figure>
+        <div class="stop-copy service-card reveal">
+          <span class="stop-number">04</span>
           <p class="kicker">PICK YOUR PRICKLY</p>
-          <h2>Celebrant. MC. Voice. Design.</h2>
-          <ul class="service-list">
-            <li><span>01</span> Wedding & Life Celebrant</li>
-            <li><span>02</span> Destination & Cultural Weddings</li>
-            <li><span>03</span> MC & Moderator</li>
-            <li><span>04</span> Voiceover Services</li>
-            <li><span>05</span> Bespoke Invitation Design</li>
-          </ul>
+          <h3>What are we making?</h3>
+          <div class="service-list">
+            <button type="button" data-service="A ceremony written around the two of you — legal bits handled, personality intact."><span>01</span>Wedding & Life Celebrant<i>↗</i></button>
+            <button type="button" data-service="Destination, cultural and blended celebrations with room for every tradition that matters."><span>02</span>Destination & Cultural Weddings<i>↗</i></button>
+            <button type="button" data-service="A confident room-runner who keeps the energy up and the microphone moving."><span>03</span>MC & Moderator<i>↗</i></button>
+            <button type="button" data-service="A distinctive voice for campaigns, events, explainers and beautifully odd ideas."><span>04</span>Voiceover Services<i>↗</i></button>
+            <button type="button" data-service="Invitations and visual pieces that feel like the party before the party."><span>05</span>Bespoke Invitation Design<i>↗</i></button>
+          </div>
+          <p class="service-detail" aria-live="polite">Tap a service for the short version.</p>
         </div>
       </article>
 
-      <article class="journey-stop stop-left reveal" data-stop="5">
-        <span class="stop-no">05</span>
-        <div class="stop-card hot">
-          <p class="kicker">A LITTLE ROMANCE. A LITTLE CHAOS.</p>
-          <h2>Zero beige wedding energy.</h2>
-          <p>Let the room breathe. Let people laugh. Let the awkward bits become the memorable bits.</p>
+      <article class="journey-stop stop-left" data-stop="5">
+        <div class="stop-copy reveal">
+          <span class="stop-number">05</span>
+          <p class="kicker">THE ENERGY</p>
+          <h3>A little romance. A little chaos.</h3>
+          <p>Let the room breathe. Let people laugh. Let the awkward bits become the memorable bits. Perfect is overrated. Alive is better.</p>
+          <a class="scribble-button" href="#vibe">show me the vibe →</a>
         </div>
-        <img class="stop-art parallax" data-speed="0.06" src="assets/cactus-collection.jpeg" alt="Collection of illustrated potted cacti">
+        <figure class="stop-art cactus-pot-art parallax" data-speed="0.07">
+          <img src="assets/03_cactus_bowl.jpeg" alt="Large decorative bowl filled with many illustrated cacti">
+        </figure>
       </article>
 
-      <div class="floating-doodle d1">♡</div>
-      <div class="floating-doodle d2">✦</div>
-      <div class="floating-doodle d3">↘</div>
+      <div class="path-doodle path-heart" aria-hidden="true">♡</div>
+      <div class="path-doodle path-squiggle" aria-hidden="true">⌁</div>
+      <div class="path-doodle path-star" aria-hidden="true">✦</div>
+      <div class="path-doodle path-arrow" aria-hidden="true">↙</div>
     </section>
 
     <section class="manifesto">
-      <div class="manifesto-inner reveal">
+      <div class="manifesto-copy reveal">
         <p class="kicker">THE PRICKLY PROMISE</p>
-        <blockquote>“The ceremony should feel like a room full of people thinking: yep, that is so them.”</blockquote>
+        <blockquote>“The ceremony should feel like a room full of people thinking: <em>yep, that is so them.</em>”</blockquote>
+        <p>Not a performance at you. A celebration with you.</p>
       </div>
-      <div class="manifesto-art parallax" data-speed="0.08"><img src="assets/cactus-garden.jpeg" alt="Illustrated cactus garden arrangement"></div>
+      <figure class="manifesto-art parallax" data-speed="0.08">
+        <img src="assets/06_cactus_collection.jpeg" alt="Five illustrated potted cacti with red flowering details">
+      </figure>
+      <div class="manifesto-ring ring-one" aria-hidden="true"></div>
+      <div class="manifesto-ring ring-two" aria-hidden="true"></div>
     </section>
 
-    <section class="contact world-section" id="contact">
-      <div class="contact-copy reveal">
-        <p class="kicker">READY TO MAKE IT WEIRDLY WONDERFUL?</p>
-        <h2>Chew the cactus<br>with me.</h2>
-        <p>Tell me where, when and what you absolutely do <strong>not</strong> want your ceremony to feel like.</p>
-        <a class="big-link" href="mailto:hello@thepricklyone.com">hello@thepricklyone.com ↗</a>
-        <a class="small-link" href="https://www.thepricklyone.com">thepricklyone.com</a>
+    <section class="vibe" id="vibe">
+      <div class="vibe-heading">
+        <p class="kicker">THE VIBE, IN PICTURES</p>
+        <h2>Scroll down.<br>The gallery goes sideways.</h2>
+        <p class="vibe-instruction">because straight lines are suspicious ↓</p>
       </div>
-      <div class="contact-art reveal">
-        <img src="assets/services-poster.png" alt="The Prickly Celebrant service menu poster">
+      <div class="gallery-scroll" data-gallery-scroll>
+        <div class="gallery-sticky">
+          <div class="gallery-track" data-gallery-track>
+            <article class="gallery-card card-type">
+              <span>01 / 05</span>
+              <h3>Make it<br><em>personal.</em></h3>
+              <p>The kind of ceremony people quote back to you later.</p>
+            </article>
+            <figure class="gallery-card photo-card rotate-r">
+              <img src="assets/01_infinity_couple.jpeg" alt="Infinity cactus couple illustration">
+              <figcaption>two heads. one wild idea.</figcaption>
+            </figure>
+            <figure class="gallery-card photo-card rotate-l">
+              <img src="assets/04_cactus_candles.jpeg" alt="Cactus garden and candles illustration">
+              <figcaption>romance, but make it prickly.</figcaption>
+            </figure>
+            <article class="gallery-card quote-card">
+              <span>04 / 05</span>
+              <p>NO BEIGE<br>WEDDING<br>ENERGY.</p>
+              <div class="quote-doodle" aria-hidden="true">♡ ✦ ⌁</div>
+            </article>
+            <figure class="gallery-card poster-card rotate-r">
+              <img src="assets/09_services_poster.png" alt="The Prickly Celebrant illustrated service menu poster">
+              <figcaption>the full prickly menu.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Brand message">
+      <div class="ticker-track">
+        <span>DELIGHTFULLY OFFBEAT ✦ HEARTFELT, NOT HEAVY ✦ ZERO BEIGE ENERGY ✦ </span>
+        <span>DELIGHTFULLY OFFBEAT ✦ HEARTFELT, NOT HEAVY ✦ ZERO BEIGE ENERGY ✦ </span>
+        <span>DELIGHTFULLY OFFBEAT ✦ HEARTFELT, NOT HEAVY ✦ ZERO BEIGE ENERGY ✦ </span>
+      </div>
+    </section>
+
+    <section class="finale" id="contact">
+      <div class="finale-art-wrap">
+        <figure class="finale-art parallax" data-speed="0.06">
+          <img src="assets/08_cactus_garden.jpeg" alt="Large illustrated cactus garden">
+        </figure>
+        <div class="finale-badge" aria-hidden="true">LET’S<br>MAKE<br>IT YOURS</div>
+      </div>
+      <div class="finale-copy reveal">
+        <p class="kicker">READY?</p>
+        <h2>Chew the<br><em>cactus</em><br>with me.</h2>
+        <p>Tell me what you’re planning, where it’s happening, and what you absolutely do <strong>not</strong> want it to feel like.</p>
+        <a class="contact-button" href="https://www.thepricklyone.com" target="_blank" rel="noopener">
+          <span>START THE CONVERSATION</span><strong>↗</strong>
+        </a>
+        <a class="site-url" href="https://www.thepricklyone.com" target="_blank" rel="noopener">www.thepricklyone.com</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <span>THE PRICKLY CELEBRANT</span>
-    <span>delightfully offbeat</span>
-    <span>© <span id="year"></span></span>
+    <div class="footer-brand">THE PRICKLY CELEBRANT</div>
+    <div>delightfully offbeat</div>
+    <div>© <span id="year"></span></div>
   </footer>
 
   <script src="script.js"></script>
