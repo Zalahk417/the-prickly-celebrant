@@ -1,4 +1,14 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Load the final composition layer after the base stylesheet.
+if (!document.querySelector('link[data-polish]')) {
+  const polish = document.createElement('link');
+  polish.rel = 'stylesheet';
+  polish.href = 'polish.css';
+  polish.dataset.polish = 'true';
+  document.head.appendChild(polish);
+}
+
 const journey = document.querySelector('[data-journey]');
 const landscape = document.querySelector('[data-landscape]');
 const ghost = document.querySelector('[data-landscape-ghost]');
@@ -8,6 +18,10 @@ const year = document.querySelector('#year');
 const sceneArt = [...document.querySelectorAll('[data-scene-art]')];
 
 if (year) year.textContent = new Date().getFullYear();
+
+document.querySelectorAll('[data-future-link]').forEach((link) => {
+  link.addEventListener('click', (event) => event.preventDefault());
+});
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -23,9 +37,9 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 let ticking = false;
 
 function updateSceneArtwork(progress) {
-  const revealPoints = [0.18, 0.31, 0.44, 0.57, 0.69, 0.82];
+  const revealPoints = [0.20, 0.58, 0.76];
   sceneArt.forEach((el, index) => {
-    el.classList.toggle('visible', progress >= revealPoints[index]);
+    el.classList.toggle('visible', progress >= (revealPoints[index] ?? 0.7));
   });
 }
 
@@ -41,13 +55,9 @@ function updateJourney() {
   if (!reducedMotion) {
     landscape.style.transform = `translate3d(-50%, ${y.toFixed(2)}px, 0)`;
     if (ghost) ghost.style.transform = `translate3d(-50%, ${y.toFixed(2)}px, 0)`;
-
-    // The detailed landscape already reaches halfway down the first viewport on load,
-    // then uncovers progressively as the visitor walks the page.
     if (revealLayer) {
       const revealed = clamp(0.50 + progress * 0.58);
-      const hiddenBottom = (1 - revealed) * 100;
-      revealLayer.style.clipPath = `inset(0 0 ${hiddenBottom.toFixed(2)}% 0)`;
+      revealLayer.style.clipPath = `inset(0 0 ${((1 - revealed) * 100).toFixed(2)}% 0)`;
     }
   } else if (revealLayer) {
     revealLayer.style.clipPath = 'none';
