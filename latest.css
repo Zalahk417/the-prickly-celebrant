@@ -1,11 +1,50 @@
-/* Final composition tune — real menu asset + stronger opening */
+/* Final composition tune — reliable menu lockup + zig-zag service journey */
 .brand img{width:500px!important;height:190px!important;object-fit:contain!important;object-position:left top!important}
 .site-header{padding-left:34px!important;padding-top:8px!important}
-.chapter-intro{min-height:78vh!important;padding-top:36vh!important;padding-bottom:0!important}
-.about-linda{min-height:24vh!important;margin-top:-2vh!important}
-.real-menu-lockup{position:relative;width:min(620px,84vw);height:205px;margin:0 auto 0;display:flex;align-items:center;justify-content:center}
-.real-menu-logo{width:min(400px,58vw);height:auto;object-fit:contain;position:relative;z-index:3;filter:drop-shadow(0 6px 10px rgba(49,38,24,.06))}
-.real-menu-lockup .menu-hand{width:min(225px,24vw)!important;right:-18px!important;top:23px!important;transform:rotate(1deg)!important;z-index:4!important}
+
+/* Opening cards: same footprint, first one lower */
+.chapter-intro{min-height:80vh!important;padding-top:40vh!important;padding-bottom:0!important}
+.about-linda{min-height:24vh!important;margin-top:-1vh!important}
+.intro-paper,.story-paper{width:min(385px,36vw)!important;padding:20px 22px!important}
+.intro-paper h1,.story-paper h2{font-size:clamp(27px,2.7vw,37px)!important;line-height:1.05!important;margin:7px 0 11px!important}
+.intro-paper>p:not(.kicker),.story-paper>p{font-size:14px!important;line-height:1.48!important}
+
+/* Never show a broken custom menu image. Rebuild the lockup from the proven logo asset. */
+.real-menu-lockup{position:relative;width:min(600px,84vw);height:190px;margin:0 auto;display:flex;align-items:center;justify-content:center}
+.real-menu-logo{display:none!important}
+.real-menu-lockup::before{content:"";display:block;width:min(330px,52vw);height:150px;background:url('assets/10_logo.png') center/contain no-repeat;position:relative;z-index:3}
+.real-menu-lockup::after{content:"MENU";position:absolute;left:50%;bottom:9px;transform:translateX(-50%) rotate(-2deg);font-family:'Chewy',cursive;font-size:32px;line-height:1;letter-spacing:.07em;color:var(--red);z-index:5;text-shadow:1px 1px 0 var(--paper)}
+.real-menu-lockup .menu-hand{width:min(210px,23vw)!important;right:18px!important;top:24px!important;transform:rotate(2deg)!important;z-index:4!important}
+.service-intro{margin-bottom:2vh!important}
 .service-intro-copy{font-weight:590!important}
-@media(max-width:980px){.brand img{width:420px!important;height:165px!important}.chapter-intro{min-height:75vh!important;padding-top:34vh!important}.real-menu-lockup{height:190px;width:86vw}.real-menu-logo{width:min(365px,55vw)}.real-menu-lockup .menu-hand{width:min(205px,25vw)!important;right:-4px!important;top:25px!important}}
-@media(max-width:720px){.brand img{width:300px!important;height:118px!important}.site-header{padding-left:12px!important}.chapter-intro{min-height:72vh!important;padding-top:32vh!important}.real-menu-lockup{height:155px;width:94vw}.real-menu-logo{width:min(280px,62vw)}.real-menu-lockup .menu-hand{width:145px!important;right:0!important;top:18px!important}}
+
+/* Zig-zag trail: one service at a time */
+.service-grid{display:flex!important;flex-direction:column!important;gap:1.2vh!important;width:100%!important;max-width:980px!important;margin:0 auto!important;padding:0 3vw!important}
+.service-slip{width:min(430px,43vw)!important;min-height:0!important;padding:18px 20px 16px!important;align-self:flex-start!important;margin:0!important;transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)!important}
+.service-slip:nth-child(even){align-self:flex-end!important}
+.service-slip.reveal:not(.visible){opacity:0!important;transform:translate3d(-54px,28px,0) rotate(-1.2deg)!important}
+.service-slip:nth-child(even).reveal:not(.visible){transform:translate3d(54px,28px,0) rotate(1.2deg)!important}
+.service-slip.visible{opacity:1!important;transform:translate3d(0,0,0)!important}
+.service-slip h2{font-size:clamp(25px,2.5vw,34px)!important;line-height:1.05!important}
+.service-slip>p:not(.service-name){font-size:13px!important;line-height:1.42!important}
+.price strong{font-size:20px!important}
+
+/* End composition stays centred */
+.closing-couple{width:min(590px,55vw);margin:0 auto -28px!important;z-index:5;position:relative;pointer-events:none;left:auto!important;right:auto!important;transform:none!important}
+.closing-paper{z-index:8;margin:0 auto!important;align-self:center!important;width:min(520px,50vw)!important;padding:23px 25px!important}
+
+@media(max-width:980px){
+  .brand img{width:440px!important;height:170px!important}
+  .chapter-intro{min-height:78vh!important;padding-top:39vh!important}
+  .intro-paper,.story-paper{width:min(360px,42vw)!important}
+  .real-menu-lockup{height:180px;width:88vw}.real-menu-lockup::before{width:min(310px,48vw);height:142px}.real-menu-lockup::after{font-size:30px}.real-menu-lockup .menu-hand{width:min(190px,24vw)!important;right:8px!important;top:28px!important}
+  .service-grid{max-width:900px!important;padding:0 4vw!important}.service-slip{width:min(390px,42vw)!important}
+}
+
+@media(max-width:720px){
+  .brand img{width:320px!important;height:122px!important}.site-header{padding-left:12px!important}
+  .chapter-intro{min-height:74vh!important;padding-top:37vh!important}
+  .intro-paper,.story-paper{width:min(84vw,390px)!important;padding:18px 19px!important}.intro-paper h1,.story-paper h2{font-size:clamp(25px,7vw,33px)!important}
+  .real-menu-lockup{height:150px;width:94vw}.real-menu-lockup::before{width:min(245px,56vw);height:115px}.real-menu-lockup::after{font-size:25px;bottom:5px}.real-menu-lockup .menu-hand{width:145px!important;right:0!important;top:18px!important}
+  .service-grid{padding:0 7vw!important;gap:1.4vh!important}.service-slip{width:min(82vw,390px)!important}.service-slip:nth-child(odd){align-self:flex-start!important}.service-slip:nth-child(even){align-self:flex-end!important}
+}
