@@ -1,25 +1,11 @@
 /* Final composition tune — real menu asset + stronger opening */
 .brand img{width:500px!important;height:190px!important;object-fit:contain!important;object-position:left top!important}
 .site-header{padding-left:34px!important;padding-top:8px!important}
-
 .chapter-intro{min-height:78vh!important;padding-top:36vh!important;padding-bottom:0!important}
 .about-linda{min-height:24vh!important;margin-top:-2vh!important}
-
 .real-menu-lockup{position:relative;width:min(620px,84vw);height:205px;margin:0 auto 0;display:flex;align-items:center;justify-content:center}
 .real-menu-logo{width:min(400px,58vw);height:auto;object-fit:contain;position:relative;z-index:3;filter:drop-shadow(0 6px 10px rgba(49,38,24,.06))}
 .real-menu-lockup .menu-hand{width:min(225px,24vw)!important;right:-18px!important;top:23px!important;transform:rotate(1deg)!important;z-index:4!important}
 .service-intro-copy{font-weight:590!important}
-
-@media(max-width:980px){
-  .brand img{width:420px!important;height:165px!important}
-  .chapter-intro{min-height:75vh!important;padding-top:34vh!important}
-  .real-menu-lockup{height:190px;width:86vw}.real-menu-logo{width:min(365px,55vw)}
-  .real-menu-lockup .menu-hand{width:min(205px,25vw)!important;right:-4px!important;top:25px!important}
-}
-@media(max-width:720px){
-  .brand img{width:300px!important;height:118px!important}
-  .site-header{padding-left:12px!important}
-  .chapter-intro{min-height:72vh!important;padding-top:32vh!important}
-  .real-menu-lockup{height:155px;width:94vw}.real-menu-logo{width:min(280px,62vw)}
-  .real-menu-lockup .menu-hand{width:145px!important;right:0!important;top:18px!important}
-}
+@media(max-width:980px){.brand img{width:420px!important;height:165px!important}.chapter-intro{min-height:75vh!important;padding-top:34vh!important}.real-menu-lockup{height:190px;width:86vw}.real-menu-logo{width:min(365px,55vw)}.real-menu-lockup .menu-hand{width:min(205px,25vw)!important;right:-4px!important;top:25px!important}}
+@media(max-width:720px){.brand img{width:300px!important;height:118px!important}.site-header{padding-left:12px!important}.chapter-intro{min-height:72vh!important;padding-top:32vh!important}.real-menu-lockup{height:155px;width:94vw}.real-menu-logo{width:min(280px,62vw)}.real-menu-lockup .menu-hand{width:145px!important;right:0!important;top:18px!important}}
