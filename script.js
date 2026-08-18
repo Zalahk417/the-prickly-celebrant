@@ -13,7 +13,7 @@ if (!document.querySelector('link[data-polish]')) {
 if (!document.querySelector('link[data-hotfix]')) {
   const hotfix = document.createElement('link');
   hotfix.rel = 'stylesheet';
-  hotfix.href = 'hotfix.css?v=20260818-2124';
+  hotfix.href = 'hotfix.css?v=20260818-2200';
   hotfix.dataset.hotfix = 'true';
   document.head.appendChild(hotfix);
 }
@@ -21,9 +21,9 @@ if (!document.querySelector('link[data-hotfix]')) {
 // Remove the ring-hands artwork completely so it cannot create dead spacing.
 document.querySelectorAll('.art-a, .service-ring-art').forEach((el) => el.remove());
 
-// Force the approved Prickly Menu artwork to be requested fresh.
+// Use the final approved Prickly Menu artwork committed as a standalone asset.
 const menuLogo = document.querySelector('.real-menu-logo');
-if (menuLogo) menuLogo.src = 'assets/prickly-menu.png?v=20260818-2124';
+if (menuLogo) menuLogo.src = 'assets/prickly-menu-final-real.png?v=20260818-2200';
 
 const journey = document.querySelector('[data-journey]');
 const landscape = document.querySelector('[data-landscape]');
