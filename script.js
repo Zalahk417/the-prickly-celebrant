@@ -13,28 +13,17 @@ if (!document.querySelector('link[data-polish]')) {
 if (!document.querySelector('link[data-hotfix]')) {
   const hotfix = document.createElement('link');
   hotfix.rel = 'stylesheet';
-  hotfix.href = 'hotfix.css?v=20260818-2112';
+  hotfix.href = 'hotfix.css?v=20260818-2124';
   hotfix.dataset.hotfix = 'true';
   document.head.appendChild(hotfix);
 }
 
-// Move the ring-hands artwork out of the opening and place it directly
-// underneath Wedding & Life Celebrant, where it belongs in the journey.
-const originalRingArt = document.querySelector('.art-a');
-const weddingSlip = document.querySelector('#service-wedding');
-if (originalRingArt && weddingSlip && !document.querySelector('.service-ring-art')) {
-  const figure = document.createElement('figure');
-  figure.className = 'service-ring-art reveal';
-  const image = originalRingArt.querySelector('img');
-  if (image) figure.appendChild(image.cloneNode(true));
-  weddingSlip.insertAdjacentElement('afterend', figure);
-  originalRingArt.remove();
-}
+// Remove the ring-hands artwork completely so it cannot create dead spacing.
+document.querySelectorAll('.art-a, .service-ring-art').forEach((el) => el.remove());
 
-// Force the approved menu asset to be requested fresh. The CSS layer also
-// supplies a visible fallback so the menu can never disappear again.
+// Force the approved Prickly Menu artwork to be requested fresh.
 const menuLogo = document.querySelector('.real-menu-logo');
-if (menuLogo) menuLogo.src = 'assets/prickly-menu.png?v=20260818-2112';
+if (menuLogo) menuLogo.src = 'assets/prickly-menu.png?v=20260818-2124';
 
 const journey = document.querySelector('[data-journey]');
 const landscape = document.querySelector('[data-landscape]');
