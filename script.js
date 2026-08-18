@@ -15,7 +15,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     entry.target.classList.add('visible');
     revealObserver.unobserve(entry.target);
   });
-}, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
@@ -23,9 +23,9 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 let ticking = false;
 
 function updateSceneArtwork(progress) {
+  const revealPoints = [0.18, 0.31, 0.44, 0.57, 0.69, 0.82];
   sceneArt.forEach((el, index) => {
-    const revealAt = 0.20 + index * 0.115;
-    el.classList.toggle('visible', progress >= revealAt);
+    el.classList.toggle('visible', progress >= revealPoints[index]);
   });
 }
 
@@ -41,8 +41,12 @@ function updateJourney() {
   if (!reducedMotion) {
     landscape.style.transform = `translate3d(-50%, ${y.toFixed(2)}px, 0)`;
     if (ghost) ghost.style.transform = `translate3d(-50%, ${y.toFixed(2)}px, 0)`;
+
+    // The detailed landscape already reaches halfway down the first viewport on load,
+    // then uncovers progressively as the visitor walks the page.
     if (revealLayer) {
-      const hiddenBottom = Math.max(0, 100 - progress * 112);
+      const revealed = clamp(0.50 + progress * 0.58);
+      const hiddenBottom = (1 - revealed) * 100;
       revealLayer.style.clipPath = `inset(0 0 ${hiddenBottom.toFixed(2)}% 0)`;
     }
   } else if (revealLayer) {
