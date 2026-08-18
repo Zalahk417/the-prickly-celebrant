@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+/* Final composition polish */
+.brand img{width:285px;height:118px;object-fit:contain;object-position:left top}
+.site-header nav{font-size:13px;font-weight:600;padding-top:22px;gap:30px}
+
+.journey{min-height:0}
+.about-linda{min-height:46vh;padding-top:3vh;padding-bottom:3vh}
+.service-path{padding-top:0;padding-bottom:1.5vh}
+.service-grid{gap:2vh 4vw}
+.chapter-closing{min-height:82vh;padding-top:4vh;padding-bottom:5vh;flex-direction:column;justify-content:flex-end;gap:0}
+
+/* Cactus-shaped floating actions */
+.floating-actions{right:16px;gap:12px}
+.float-action{position:relative;width:54px;min-height:108px;border:1.5px solid var(--ink);border-radius:48% 48% 34% 34% / 22% 22% 16% 16%;overflow:visible;box-shadow:0 8px 18px rgba(49,38,24,.10)}
+.float-action::before{content:"";position:absolute;inset:4px;border:1px dashed rgba(35,31,26,.22);border-radius:inherit;pointer-events:none}
+.contact-action::before{border-color:rgba(251,241,217,.42)}
+.cactus-arm{position:absolute;width:16px;height:31px;border:1.5px solid currentColor;border-radius:12px;background:inherit;z-index:-1}
+.cactus-arm::after{content:"";position:absolute;width:12px;height:14px;border:1.5px solid currentColor;border-bottom:0;border-radius:10px 10px 0 0;top:-8px}
+.arm-one{left:-11px;top:30px;transform:rotate(-8deg)}.arm-one::after{left:-5px}
+.arm-two{right:-11px;top:51px;transform:rotate(8deg)}.arm-two::after{right:-5px}
+.float-action span{font-size:8px;font-weight:600}.float-action b{font-size:14px}
+
+/* Prickly Menu heading */
+.service-intro{position:relative;margin-bottom:2.5vh;z-index:14}
+.menu-lockup{position:relative;width:min(620px,86vw);height:185px;margin:0 auto -4px;display:flex;align-items:center;justify-content:center}
+.menu-logo{width:min(330px,52vw);height:145px;margin:0;object-fit:contain;z-index:2}
+.prickly-menu-word{font-family:'Chewy',cursive;font-size:58px;line-height:1;color:var(--red);transform:rotate(-3deg);margin-left:-20px;margin-top:40px;text-shadow:2px 2px 0 var(--paper);z-index:3}
+.menu-hand{position:absolute;width:min(250px,28vw);right:-55px;top:-30px;mix-blend-mode:multiply;transform:rotate(7deg);-webkit-mask-image:radial-gradient(ellipse 76% 68% at 66% 52%,#000 42%,rgba(0,0,0,.98) 60%,transparent 82%);mask-image:radial-gradient(ellipse 76% 68% at 66% 52%,#000 42%,rgba(0,0,0,.98) 60%,transparent 82%);z-index:1}
+.service-intro-copy{max-width:600px!important;margin:0 auto!important;padding:10px 14px!important;background:rgba(251,241,217,.90);border-top:1px solid rgba(35,31,26,.16);border-bottom:1px solid rgba(35,31,26,.16);font-size:14px!important;line-height:1.55!important;font-weight:500;color:rgba(35,31,26,.94);text-shadow:0 1px 0 rgba(255,255,255,.55)}
+
+/* Service cards remain compact but readable */
+.service-slip{padding:20px 22px 18px}
+.service-name{font-size:clamp(13px,1.2vw,17px);font-weight:600}
+.service-slip h2{margin-top:6px;margin-bottom:9px}
+.price{margin-top:11px;padding-top:9px}.price strong{font-size:21px}
+.service-seed{display:inline-block;margin-top:8px;font:500 8px var(--mono);letter-spacing:.04em;color:rgba(35,31,26,.64);border-bottom:1px solid rgba(255,43,39,.45);padding-bottom:2px}.service-seed:hover{color:var(--red);border-color:var(--red)}
+
+/* Decorative scene artwork: never behind the menu cards */
+.art-d{top:73%;left:-3vw;width:min(22vw,300px);z-index:3}.art-e{top:82%;right:-3vw;width:min(25vw,340px);z-index:3}
+
+/* Closing composition */
+.closing-couple{width:min(620px,58vw);margin:0 auto -42px;z-index:5;position:relative;pointer-events:none}
+.closing-couple img{width:100%;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse at center,#000 48%,rgba(0,0,0,.98) 63%,transparent 84%);mask-image:radial-gradient(ellipse at center,#000 48%,rgba(0,0,0,.98) 63%,transparent 84%)}
+.closing-paper{z-index:8}
+
+@media(max-width:980px){
+  .brand img{width:235px;height:98px}.site-header nav{font-size:12px;padding-top:20px}
+  .menu-lockup{height:168px}.menu-logo{width:min(300px,50vw);height:130px}.prickly-menu-word{font-size:51px}.menu-hand{width:min(225px,29vw);right:-20px;top:-22px}
+  .service-grid{gap:1.7vh 3vw}.about-linda{min-height:42vh}
+  .closing-couple{width:min(650px,72vw);margin-bottom:-34px}
+}
+
+@media(max-width:720px){
+  .brand img{width:178px;height:78px}.site-header nav{font-size:10px;padding-top:16px;gap:12px}
+  .floating-actions{right:8px}.float-action{width:45px;min-height:92px}.cactus-arm{width:13px;height:25px}.arm-one{left:-8px}.arm-two{right:-8px}
+  .about-linda{min-height:40vh}.service-grid{gap:1.5vh}
+  .menu-lockup{height:145px;width:94vw}.menu-logo{width:235px;height:105px}.prickly-menu-word{font-size:42px;margin-left:-15px;margin-top:30px}.menu-hand{width:165px;right:-35px;top:-10px}
+  .service-intro-copy{width:min(86vw,520px);font-size:13px!important;padding:9px 11px!important}
+  .closing-couple{width:88vw;margin-bottom:-24px}.chapter-closing{min-height:70vh;padding-top:2vh}
+}
