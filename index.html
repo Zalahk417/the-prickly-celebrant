@@ -25,6 +25,11 @@
     </nav>
   </header>
 
+  <aside class="floating-actions" aria-label="Quick actions">
+    <a class="float-action menu-action" href="#services"><span>MENU</span><b>☰</b></a>
+    <a class="float-action contact-action" href="#contact"><span>CONTACT</span><b>↗</b></a>
+  </aside>
+
   <main id="top">
     <section class="journey" data-journey>
       <div class="landscape" aria-hidden="true">
@@ -36,12 +41,12 @@
         <div class="journey-meter"><span data-meter></span></div>
       </div>
 
-      <div class="scene-art art-a" data-scene-art><img src="assets/05_ring_hands.jpeg" alt=""></div>
-      <div class="scene-art art-b" data-scene-art><img src="assets/03_cactus_bowl.jpeg" alt=""></div>
-      <div class="scene-art art-c" data-scene-art><img src="assets/07_marker_hand.jpeg" alt=""></div>
-      <div class="scene-art art-d" data-scene-art><img src="assets/06_cactus_collection.jpeg" alt=""></div>
-      <div class="scene-art art-e" data-scene-art><img src="assets/08_cactus_garden.jpeg" alt=""></div>
-      <div class="scene-art art-f" data-scene-art><img src="assets/01_infinity_couple.jpeg" alt=""></div>
+      <div class="scene-art art-a sticker-art" data-scene-art><img src="assets/05_ring_hands.jpeg" alt=""></div>
+      <div class="scene-art art-b sticker-art" data-scene-art><img src="assets/03_cactus_bowl.jpeg" alt=""></div>
+      <div class="scene-art art-c sticker-art marker-sticker" data-scene-art><img src="assets/07_marker_hand.jpeg" alt=""></div>
+      <div class="scene-art art-d sticker-art" data-scene-art><img src="assets/06_cactus_collection.jpeg" alt=""></div>
+      <div class="scene-art art-e sticker-art" data-scene-art><img src="assets/08_cactus_garden.jpeg" alt=""></div>
+      <div class="scene-art art-f sticker-art" data-scene-art><img src="assets/01_infinity_couple.jpeg" alt=""></div>
 
       <div class="journey-content">
         <section class="chapter chapter-intro" id="about" data-chapter>
@@ -63,57 +68,66 @@
 
         <section class="service-path" id="services" aria-label="Prickly Celebrant services">
           <div class="service-intro reveal">
-            <p class="kicker">THE PRICKLY MENU</p>
-            <p>Pick one thing or stitch a few together. Prices below are <span class="accent">indicative starting points</span>; Linda confirms a tailored quote after a chat.</p>
+            <img src="assets/10_logo.png" alt="The Prickly Celebrant" class="menu-logo">
+            <p class="menu-label">SERVICE MENU</p>
+            <p>Pick one thing or stitch a few together. Prices are <span class="accent">indicative starting points</span>; Linda confirms a tailored quote after a chat.</p>
           </div>
 
-          <article class="service-slip slip-left reveal" data-service-slip>
-            <span class="service-index">01</span>
-            <p class="kicker">WEDDING & LIFE CELEBRANT</p>
-            <h2>Love, commitments and <span class="accent">life moments</span>.</h2>
-            <p>Personal ceremonies for weddings, commitment celebrations, vow renewals, naming days, anniversaries and the occasions that deserve more than a template.</p>
-            <div class="price"><span>Example from</span><strong>$950</strong><small>AUD</small></div>
-          </article>
+          <div class="service-grid">
+            <article class="service-slip slip-left reveal" id="service-wedding" data-service-slip>
+              <span class="service-index">01</span>
+              <p class="service-name">WEDDING & LIFE CELEBRANT</p>
+              <h2>Love, commitments and <span class="accent">life moments</span>.</h2>
+              <p>Personal ceremonies for weddings, commitment celebrations, vow renewals, naming days, anniversaries and the occasions that deserve more than a template.</p>
+              <div class="price"><span>From</span><strong>$950</strong><small>AUD · example</small></div>
+              <span class="service-seed">Full service details coming next →</span>
+            </article>
 
-          <article class="service-slip slip-right reveal" data-service-slip>
-            <span class="service-index">02</span>
-            <p class="kicker">DESTINATION & CULTURAL WEDDINGS</p>
-            <h2>Bring the <span class="accent">whole world</span> into the room.</h2>
-            <p>Destination, multi-family and multi-tradition celebrations shaped with curiosity and care, with room for customs, languages and rituals that matter.</p>
-            <div class="price"><span>Example from</span><strong>$1,400</strong><small>AUD + travel</small></div>
-          </article>
+            <article class="service-slip slip-right reveal" id="service-destination" data-service-slip>
+              <span class="service-index">02</span>
+              <p class="service-name">DESTINATION & CULTURAL WEDDINGS</p>
+              <h2>Bring the <span class="accent">whole world</span> into the room.</h2>
+              <p>Destination, multi-family and multi-tradition celebrations shaped with curiosity and care, with room for customs, languages and rituals that matter.</p>
+              <div class="price"><span>From</span><strong>$1,400</strong><small>AUD + travel</small></div>
+              <span class="service-seed">Full service details coming next →</span>
+            </article>
 
-          <article class="service-slip slip-left reveal" data-service-slip>
-            <span class="service-index">03</span>
-            <p class="kicker">MC & MODERATOR</p>
-            <h2>Keep the room <span class="accent">moving</span>.</h2>
-            <p>Clear cues, calm timing and enough personality to keep the energy alive without making the night about the person holding the microphone.</p>
-            <div class="price"><span>Example from</span><strong>$650</strong><small>AUD</small></div>
-          </article>
+            <article class="service-slip slip-left reveal" id="service-mc" data-service-slip>
+              <span class="service-index">03</span>
+              <p class="service-name">MC & MODERATOR</p>
+              <h2>Keep the room <span class="accent">moving</span>.</h2>
+              <p>Clear cues, calm timing and enough personality to keep the energy alive without making the night about the person holding the microphone.</p>
+              <div class="price"><span>From</span><strong>$650</strong><small>AUD · example</small></div>
+              <span class="service-seed">Full service details coming next →</span>
+            </article>
 
-          <article class="service-slip slip-right reveal" data-service-slip>
-            <span class="service-index">04</span>
-            <p class="kicker">VOICEOVER SERVICES</p>
-            <h2>A voice with <span class="accent">character</span>.</h2>
-            <p>Voiceover for events, ceremonies, campaigns, explainers and beautifully odd ideas — warm, confident and human rather than over-produced.</p>
-            <div class="price"><span>Example from</span><strong>$250</strong><small>AUD</small></div>
-          </article>
+            <article class="service-slip slip-right reveal" id="service-voice" data-service-slip>
+              <span class="service-index">04</span>
+              <p class="service-name">VOICEOVER SERVICES</p>
+              <h2>A voice with <span class="accent">character</span>.</h2>
+              <p>Voiceover for events, ceremonies, campaigns, explainers and beautifully odd ideas — warm, confident and human rather than over-produced.</p>
+              <div class="price"><span>From</span><strong>$250</strong><small>AUD · example</small></div>
+              <span class="service-seed">Full service details coming next →</span>
+            </article>
 
-          <article class="service-slip slip-left reveal" data-service-slip>
-            <span class="service-index">05</span>
-            <p class="kicker">BESPOKE INVITATION DESIGN</p>
-            <h2>The celebration starts <span class="accent">before</span> the day.</h2>
-            <p>Custom invitations and supporting visual pieces that feel like the people and the place — not something pulled from a generic wedding template.</p>
-            <div class="price"><span>Example from</span><strong>$320</strong><small>AUD</small></div>
-          </article>
+            <article class="service-slip slip-left reveal" id="service-invitations" data-service-slip>
+              <span class="service-index">05</span>
+              <p class="service-name">BESPOKE INVITATION DESIGN</p>
+              <h2>The celebration starts <span class="accent">before</span> the day.</h2>
+              <p>Custom invitations and supporting visual pieces that feel like the people and the place — not something pulled from a generic wedding template.</p>
+              <div class="price"><span>From</span><strong>$320</strong><small>AUD · example</small></div>
+              <span class="service-seed">Full service details coming next →</span>
+            </article>
 
-          <article class="service-slip slip-right reveal" data-service-slip>
-            <span class="service-index">06</span>
-            <p class="kicker">FUNERALS & MEMORIALS</p>
-            <h2>A farewell that sounds like <span class="accent">their life</span>.</h2>
-            <p>Grounded funeral and memorial ceremonies that make room for grief, humour, character and the tiny details people actually remember.</p>
-            <div class="price"><span>Example from</span><strong>$650</strong><small>AUD</small></div>
-          </article>
+            <article class="service-slip slip-right reveal" id="service-funerals" data-service-slip>
+              <span class="service-index">06</span>
+              <p class="service-name">FUNERALS & MEMORIALS</p>
+              <h2>A farewell that sounds like <span class="accent">their life</span>.</h2>
+              <p>Grounded funeral and memorial ceremonies that make room for grief, humour, character and the tiny details people actually remember.</p>
+              <div class="price"><span>From</span><strong>$650</strong><small>AUD · example</small></div>
+              <span class="service-seed">Full service details coming next →</span>
+            </article>
+          </div>
         </section>
 
         <section class="chapter chapter-closing" id="contact" data-chapter>
