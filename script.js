@@ -9,6 +9,33 @@ if (!document.querySelector('link[data-polish]')) {
   document.head.appendChild(polish);
 }
 
+// Load the user-approved hotfix after polish so it wins the cascade.
+if (!document.querySelector('link[data-hotfix]')) {
+  const hotfix = document.createElement('link');
+  hotfix.rel = 'stylesheet';
+  hotfix.href = 'hotfix.css?v=20260818-2112';
+  hotfix.dataset.hotfix = 'true';
+  document.head.appendChild(hotfix);
+}
+
+// Move the ring-hands artwork out of the opening and place it directly
+// underneath Wedding & Life Celebrant, where it belongs in the journey.
+const originalRingArt = document.querySelector('.art-a');
+const weddingSlip = document.querySelector('#service-wedding');
+if (originalRingArt && weddingSlip && !document.querySelector('.service-ring-art')) {
+  const figure = document.createElement('figure');
+  figure.className = 'service-ring-art reveal';
+  const image = originalRingArt.querySelector('img');
+  if (image) figure.appendChild(image.cloneNode(true));
+  weddingSlip.insertAdjacentElement('afterend', figure);
+  originalRingArt.remove();
+}
+
+// Force the approved menu asset to be requested fresh. The CSS layer also
+// supplies a visible fallback so the menu can never disappear again.
+const menuLogo = document.querySelector('.real-menu-logo');
+if (menuLogo) menuLogo.src = 'assets/prickly-menu.png?v=20260818-2112';
+
 const journey = document.querySelector('[data-journey]');
 const landscape = document.querySelector('[data-landscape]');
 const ghost = document.querySelector('[data-landscape-ghost]');
