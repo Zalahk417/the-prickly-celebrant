@@ -1,0 +1,49 @@
+/* 18 Aug — layout hotfix loaded after every previous stylesheet */
+
+/* Header logo: centred and restrained */
+.site-header{display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:start!important;min-height:130px!important;padding:8px 22px!important}
+.brand{grid-column:2!important;justify-self:center!important;width:210px!important;height:112px!important;overflow:visible!important}
+.brand img{display:block!important;width:210px!important;height:auto!important;max-width:none!important;object-fit:contain!important;object-position:center top!important;transform:none!important}
+.site-header nav{grid-column:3!important;justify-self:end!important;padding-top:21px!important}
+
+/* Opening: explicitly set the two beats instead of letting older chapter rules win */
+.chapter-intro{min-height:82vh!important;padding:55vh 5vw 0!important;align-items:flex-start!important}
+.about-linda{min-height:26vh!important;margin-top:-9vh!important;padding:0 5vw 1vh!important;align-items:flex-start!important;justify-content:flex-end!important}
+.intro-paper,.story-paper{width:390px!important;max-width:39vw!important;padding:19px 21px!important;margin:0!important}
+.intro-paper h1,.story-paper h2{font-size:clamp(27px,2.65vw,36px)!important;line-height:1.05!important;margin:7px 0 10px!important}
+.intro-paper>p:not(.kicker),.story-paper>p{font-size:13px!important;line-height:1.48!important}
+
+/* Menu: force a visible brand lockup. Real asset sits above fallback. */
+.service-intro{position:relative!important;margin-top:0!important;margin-bottom:1vh!important;z-index:16!important}
+.real-menu-lockup{position:relative!important;width:min(620px,84vw)!important;height:230px!important;margin:0 auto!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.real-menu-logo{display:block!important;visibility:visible!important;opacity:1!important;width:min(390px,49vw)!important;height:auto!important;max-height:220px!important;object-fit:contain!important;position:relative!important;z-index:6!important}
+.real-menu-lockup::before{content:""!important;display:block!important;position:absolute!important;width:min(310px,41vw)!important;height:140px!important;left:50%!important;top:22px!important;transform:translateX(-50%)!important;background:url('assets/10_logo.png') center/contain no-repeat!important;z-index:2!important}
+.real-menu-lockup::after{content:"MENU"!important;display:block!important;position:absolute!important;left:50%!important;bottom:16px!important;transform:translateX(-50%) rotate(-2deg)!important;font-family:'Chewy',cursive!important;font-size:42px!important;line-height:1!important;letter-spacing:.045em!important;color:var(--red)!important;text-shadow:0 2px 0 var(--paper)!important;z-index:3!important}
+.real-menu-lockup .menu-hand{position:absolute!important;width:min(185px,19vw)!important;right:3%!important;top:32%!important;z-index:8!important;transform:rotate(-7deg)!important;mix-blend-mode:multiply!important}
+.service-intro-copy{font-weight:620!important;margin:-3px auto 0!important}
+
+/* Ring hands now belong to Wedding & Life Celebrant, not the opening */
+.art-a{display:none!important}
+.service-ring-art{display:block;width:min(300px,31vw);margin:-10px auto 2px 8%;pointer-events:none;position:relative;z-index:7}
+.service-ring-art img{width:100%;height:auto;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse at center,#000 48%,rgba(0,0,0,.98) 64%,transparent 86%);mask-image:radial-gradient(ellipse at center,#000 48%,rgba(0,0,0,.98) 64%,transparent 86%)}
+
+/* Preserve zig-zag after inserting the artwork figure */
+.service-grid>.service-slip:nth-of-type(odd){align-self:flex-start!important}
+.service-grid>.service-slip:nth-of-type(even){align-self:flex-end!important}
+.service-grid{gap:.8vh!important}
+
+@media(max-width:980px){
+  .site-header{min-height:122px!important;padding:8px 18px!important}.brand{width:195px!important;height:104px!important}.brand img{width:195px!important}
+  .chapter-intro{min-height:80vh!important;padding-top:54vh!important}.about-linda{min-height:25vh!important;margin-top:-8vh!important}
+  .intro-paper,.story-paper{width:360px!important;max-width:42vw!important}
+  .real-menu-lockup{height:220px!important}.real-menu-logo{width:min(360px,50vw)!important}.real-menu-lockup::before{width:min(290px,40vw)!important}.real-menu-lockup::after{font-size:38px!important}
+  .service-ring-art{width:min(275px,30vw)}
+}
+
+@media(max-width:720px){
+  .site-header{min-height:105px!important;padding:7px 10px!important}.brand{width:165px!important;height:92px!important}.brand img{width:165px!important}.site-header nav{padding-top:17px!important;font-size:10px!important;gap:12px!important}
+  .chapter-intro{min-height:78vh!important;padding:51vh 16px 0!important}.about-linda{min-height:24vh!important;margin-top:-5vh!important;padding:0 16px 1vh!important;justify-content:center!important}
+  .intro-paper,.story-paper{width:min(84vw,370px)!important;max-width:none!important;padding:18px 19px!important}.intro-paper h1,.story-paper h2{font-size:clamp(25px,7vw,33px)!important}
+  .real-menu-lockup{height:190px!important;width:94vw!important}.real-menu-logo{width:min(300px,66vw)!important}.real-menu-lockup::before{width:min(245px,58vw)!important;height:112px!important;top:18px!important}.real-menu-lockup::after{font-size:31px!important;bottom:10px!important}.real-menu-lockup .menu-hand{width:132px!important;right:-2%!important;top:34%!important}
+  .service-ring-art{width:56vw;max-width:260px;margin:-5px auto 0 8vw}
+}
