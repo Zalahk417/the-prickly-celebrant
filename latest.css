@@ -1,50 +1,66 @@
-/* Final composition tune — reliable menu lockup + zig-zag service journey */
-.brand img{width:500px!important;height:190px!important;object-fit:contain!important;object-position:left top!important}
-.site-header{padding-left:34px!important;padding-top:8px!important}
+/* Latest approved build — 18 Aug 2026 */
 
-/* Opening cards: same footprint, first one lower */
-.chapter-intro{min-height:80vh!important;padding-top:40vh!important;padding-bottom:0!important}
-.about-linda{min-height:24vh!important;margin-top:-1vh!important}
-.intro-paper,.story-paper{width:min(385px,36vw)!important;padding:20px 22px!important}
-.intro-paper h1,.story-paper h2{font-size:clamp(27px,2.7vw,37px)!important;line-height:1.05!important;margin:7px 0 11px!important}
-.intro-paper>p:not(.kicker),.story-paper>p{font-size:14px!important;line-height:1.48!important}
+/* Header: make the actual brand impossible to miss */
+.site-header{padding:10px 30px!important;align-items:flex-start!important}
+.brand{display:block!important;flex:0 0 280px!important;width:280px!important;height:150px!important;overflow:visible!important}
+.brand img{width:280px!important;height:auto!important;max-width:none!important;object-fit:contain!important;object-position:left top!important;transform:scale(1.38)!important;transform-origin:top left!important}
+.site-header nav{padding-top:24px!important;font-size:13px!important;font-weight:600!important}
 
-/* Never show a broken custom menu image. Rebuild the lockup from the proven logo asset. */
-.real-menu-lockup{position:relative;width:min(600px,84vw);height:190px;margin:0 auto;display:flex;align-items:center;justify-content:center}
-.real-menu-logo{display:none!important}
-.real-menu-lockup::before{content:"";display:block;width:min(330px,52vw);height:150px;background:url('assets/10_logo.png') center/contain no-repeat;position:relative;z-index:3}
-.real-menu-lockup::after{content:"MENU";position:absolute;left:50%;bottom:9px;transform:translateX(-50%) rotate(-2deg);font-family:'Chewy',cursive;font-size:32px;line-height:1;letter-spacing:.07em;color:var(--red);z-index:5;text-shadow:1px 1px 0 var(--paper)}
-.real-menu-lockup .menu-hand{width:min(210px,23vw)!important;right:18px!important;top:24px!important;transform:rotate(2deg)!important;z-index:4!important}
-.service-intro{margin-bottom:2vh!important}
-.service-intro-copy{font-weight:590!important}
+/* Opening: first card lower, second card much closer */
+.chapter-intro{min-height:78vh!important;padding-top:44vh!important;padding-bottom:0!important}
+.about-linda{min-height:34vh!important;margin-top:-5vh!important;padding-top:0!important;padding-bottom:2vh!important}
+.intro-paper,.story-paper{width:min(365px,35vw)!important;padding:18px 20px!important}
+.intro-paper h1,.story-paper h2{font-size:clamp(25px,2.45vw,34px)!important;line-height:1.06!important;margin:6px 0 10px!important}
+.intro-paper>p:not(.kicker),.story-paper>p{font-size:13px!important;line-height:1.48!important}
 
-/* Zig-zag trail: one service at a time */
-.service-grid{display:flex!important;flex-direction:column!important;gap:1.2vh!important;width:100%!important;max-width:980px!important;margin:0 auto!important;padding:0 3vw!important}
+/* One card language everywhere: torn paper + subtle dashed stitch */
+.paper{background:rgba(251,241,217,.95)!important;border:0!important;filter:drop-shadow(0 13px 22px rgba(49,38,24,.08));clip-path:polygon(2% 1%,8% 2%,13% 0,20% 2%,28% 0,34% 2%,41% .5%,49% 2%,56% 0,63% 2%,70% .5%,78% 2%,85% 0,92% 2%,99% 1%,98% 12%,100% 19%,98% 26%,100% 34%,98% 42%,100% 50%,98% 58%,100% 66%,98% 73%,100% 81%,98% 89%,99% 99%,91% 98%,84% 100%,76% 98%,69% 100%,61% 98%,54% 100%,46% 98%,38% 100%,31% 98%,23% 100%,15% 98%,8% 100%,1% 99%,2% 90%,0 83%,2% 75%,0 67%,2% 59%,0 51%,2% 43%,0 35%,2% 27%,0 19%,2% 11%)!important}
+.paper::after{content:"";position:absolute;inset:7px;border:1px dashed rgba(35,31,26,.12);pointer-events:none}
+
+/* Use the approved Prickly Menu artwork, not reconstructed text */
+.service-intro{margin-bottom:1.5vh!important}
+.real-menu-lockup{position:relative!important;width:min(620px,86vw)!important;height:260px!important;margin:0 auto!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.real-menu-logo{display:block!important;content:url('assets/prickly-menu.svg')!important;width:min(370px,46vw)!important;height:auto!important;max-height:235px!important;object-fit:contain!important;position:relative!important;z-index:4!important}
+.real-menu-lockup::before,.real-menu-lockup::after{content:none!important;display:none!important}
+.real-menu-lockup .menu-hand{position:absolute!important;width:min(180px,19vw)!important;right:6%!important;top:28%!important;transform:rotate(-7deg)!important;z-index:5!important;mix-blend-mode:multiply!important;-webkit-mask-image:radial-gradient(ellipse 72% 66% at 58% 50%,#000 42%,rgba(0,0,0,.96) 59%,transparent 80%)!important;mask-image:radial-gradient(ellipse 72% 66% at 58% 50%,#000 42%,rgba(0,0,0,.96) 59%,transparent 80%)!important}
+.service-intro-copy{font-weight:600!important;font-size:13px!important;line-height:1.55!important;background:rgba(251,241,217,.84)!important;padding:8px 14px!important;max-width:610px!important;margin:-8px auto 0!important}
+
+/* Services: compact zig-zag, one waypoint at a time */
+.service-grid{display:flex!important;flex-direction:column!important;gap:1vh!important;width:100%!important;max-width:980px!important;margin:0 auto!important;padding:0 3vw!important}
 .service-slip{width:min(430px,43vw)!important;min-height:0!important;padding:18px 20px 16px!important;align-self:flex-start!important;margin:0!important;transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.25,1)!important}
 .service-slip:nth-child(even){align-self:flex-end!important}
-.service-slip.reveal:not(.visible){opacity:0!important;transform:translate3d(-54px,28px,0) rotate(-1.2deg)!important}
-.service-slip:nth-child(even).reveal:not(.visible){transform:translate3d(54px,28px,0) rotate(1.2deg)!important}
+.service-slip.reveal:not(.visible){opacity:0!important;transform:translate3d(-48px,22px,0) rotate(-1deg)!important}
+.service-slip:nth-child(even).reveal:not(.visible){transform:translate3d(48px,22px,0) rotate(1deg)!important}
 .service-slip.visible{opacity:1!important;transform:translate3d(0,0,0)!important}
-.service-slip h2{font-size:clamp(25px,2.5vw,34px)!important;line-height:1.05!important}
+.service-slip h2{font-size:clamp(24px,2.35vw,32px)!important;line-height:1.05!important}
 .service-slip>p:not(.service-name){font-size:13px!important;line-height:1.42!important}
 .price strong{font-size:20px!important}
+.service-seed{font-size:8px!important;text-decoration:underline;text-decoration-color:rgba(255,43,39,.5);text-underline-offset:4px;pointer-events:none}
 
-/* End composition stays centred */
-.closing-couple{width:min(590px,55vw);margin:0 auto -28px!important;z-index:5;position:relative;pointer-events:none;left:auto!important;right:auto!important;transform:none!important}
-.closing-paper{z-index:8;margin:0 auto!important;align-self:center!important;width:min(520px,50vw)!important;padding:23px 25px!important}
+/* Ending: couple and enquiry are one centred composition */
+.chapter-closing{min-height:62vh!important;padding-top:3vh!important;padding-bottom:4vh!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;align-items:center!important}
+.closing-couple{width:min(560px,54vw)!important;margin:0 auto -20px!important;position:relative!important;z-index:5!important;left:auto!important;right:auto!important;transform:none!important}
+.closing-paper{z-index:8!important;margin:0 auto!important;width:min(510px,49vw)!important;padding:22px 24px!important}
+
+/* Footer: bold centred brand moment */
+footer{display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:6px!important;padding:30px 20px 24px!important;text-align:center!important}
+footer img{width:320px!important;height:auto!important;max-width:55vw!important;object-fit:contain!important;object-position:center!important}
+footer span:nth-child(2),footer span:last-child{text-align:center!important}
+footer span:nth-child(2){font-size:9px!important;letter-spacing:.05em!important}
+footer b,footer .edge-word{color:var(--red)!important;font-weight:600!important}
 
 @media(max-width:980px){
-  .brand img{width:440px!important;height:170px!important}
-  .chapter-intro{min-height:78vh!important;padding-top:39vh!important}
-  .intro-paper,.story-paper{width:min(360px,42vw)!important}
-  .real-menu-lockup{height:180px;width:88vw}.real-menu-lockup::before{width:min(310px,48vw);height:142px}.real-menu-lockup::after{font-size:30px}.real-menu-lockup .menu-hand{width:min(190px,24vw)!important;right:8px!important;top:28px!important}
+  .site-header{padding-left:22px!important}.brand{flex-basis:240px!important;width:240px!important;height:132px!important}.brand img{width:240px!important;transform:scale(1.42)!important}.site-header nav{font-size:12px!important;padding-top:22px!important}
+  .chapter-intro{min-height:76vh!important;padding-top:43vh!important}.about-linda{min-height:32vh!important;margin-top:-4vh!important}.intro-paper,.story-paper{width:min(350px,40vw)!important}
+  .real-menu-lockup{height:240px!important;width:90vw!important}.real-menu-logo{width:min(350px,45vw)!important}.real-menu-lockup .menu-hand{width:min(170px,21vw)!important;right:4%!important;top:29%!important}
   .service-grid{max-width:900px!important;padding:0 4vw!important}.service-slip{width:min(390px,42vw)!important}
 }
 
 @media(max-width:720px){
-  .brand img{width:320px!important;height:122px!important}.site-header{padding-left:12px!important}
-  .chapter-intro{min-height:74vh!important;padding-top:37vh!important}
-  .intro-paper,.story-paper{width:min(84vw,390px)!important;padding:18px 19px!important}.intro-paper h1,.story-paper h2{font-size:clamp(25px,7vw,33px)!important}
-  .real-menu-lockup{height:150px;width:94vw}.real-menu-lockup::before{width:min(245px,56vw);height:115px}.real-menu-lockup::after{font-size:25px;bottom:5px}.real-menu-lockup .menu-hand{width:145px!important;right:0!important;top:18px!important}
-  .service-grid{padding:0 7vw!important;gap:1.4vh!important}.service-slip{width:min(82vw,390px)!important}.service-slip:nth-child(odd){align-self:flex-start!important}.service-slip:nth-child(even){align-self:flex-end!important}
+  .site-header{padding:8px 12px!important}.brand{flex-basis:165px!important;width:165px!important;height:100px!important}.brand img{width:165px!important;transform:scale(1.45)!important}.site-header nav{font-size:10px!important;gap:13px!important;padding-top:18px!important}
+  .chapter-intro{min-height:74vh!important;padding-top:41vh!important}.about-linda{min-height:31vh!important;margin-top:-2vh!important}.intro-paper,.story-paper{width:min(84vw,380px)!important;padding:17px 18px!important}.intro-paper h1,.story-paper h2{font-size:clamp(24px,6.7vw,31px)!important}
+  .real-menu-lockup{height:205px!important;width:96vw!important}.real-menu-logo{width:min(300px,58vw)!important}.real-menu-lockup .menu-hand{width:130px!important;right:0!important;top:31%!important}.service-intro-copy{width:88vw!important;font-size:12px!important}
+  .service-grid{padding:0 7vw!important;gap:1.2vh!important}.service-slip{width:min(82vw,390px)!important}.service-slip:nth-child(odd){align-self:flex-start!important}.service-slip:nth-child(even){align-self:flex-end!important}
+  .closing-couple{width:min(82vw,500px)!important}.closing-paper{width:min(84vw,470px)!important}
+  footer img{width:260px!important;max-width:72vw!important}
 }
