@@ -1,37 +1,11 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Load the final composition layer after the base stylesheet.
-if (!document.querySelector('link[data-polish]')) {
-  const polish = document.createElement('link');
-  polish.rel = 'stylesheet';
-  polish.href = 'polish.css';
-  polish.dataset.polish = 'true';
-  document.head.appendChild(polish);
-}
-
-// Load the user-approved hotfix after polish so it wins the cascade.
-if (!document.querySelector('link[data-hotfix]')) {
-  const hotfix = document.createElement('link');
-  hotfix.rel = 'stylesheet';
-  hotfix.href = 'hotfix.css?v=20260818-2200';
-  hotfix.dataset.hotfix = 'true';
-  document.head.appendChild(hotfix);
-}
-
-// Remove the ring-hands artwork completely so it cannot create dead spacing.
-document.querySelectorAll('.art-a, .service-ring-art').forEach((el) => el.remove());
-
-// Use the final approved Prickly Menu artwork committed as a standalone asset.
-const menuLogo = document.querySelector('.real-menu-logo');
-if (menuLogo) menuLogo.src = 'assets/prickly-menu-final-real.png?v=20260818-2200';
-
 const journey = document.querySelector('[data-journey]');
 const landscape = document.querySelector('[data-landscape]');
 const ghost = document.querySelector('[data-landscape-ghost]');
 const revealLayer = document.querySelector('[data-landscape-reveal]');
 const meter = document.querySelector('[data-meter]');
 const year = document.querySelector('#year');
-const sceneArt = [...document.querySelectorAll('[data-scene-art]')];
 
 if (year) year.textContent = new Date().getFullYear();
 
@@ -51,13 +25,6 @@ document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 let ticking = false;
-
-function updateSceneArtwork(progress) {
-  const revealPoints = [0.20, 0.58, 0.76];
-  sceneArt.forEach((el, index) => {
-    el.classList.toggle('visible', progress >= (revealPoints[index] ?? 0.7));
-  });
-}
 
 function updateJourney() {
   if (!journey || !landscape) return;
@@ -80,7 +47,6 @@ function updateJourney() {
   }
 
   if (meter) meter.style.height = `${(progress * 100).toFixed(2)}%`;
-  updateSceneArtwork(progress);
 }
 
 function requestJourneyUpdate() {
