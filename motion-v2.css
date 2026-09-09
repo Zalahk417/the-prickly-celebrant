@@ -1,0 +1,64 @@
+/* Motion V2 — deliberate, low-amplitude movement layered over the consolidated layout */
+:root{--motion-red:#ff2b27;--motion-paper:#fbf1d9}
+
+@media (prefers-reduced-motion:no-preference){
+  .brand img{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s ease;transform-origin:50% 30%}
+  .brand:hover img{transform:rotate(-1.2deg) scale(1.025);filter:drop-shadow(0 7px 10px rgba(49,38,24,.09))}
+
+  .paper,.service-slip{will-change:transform,opacity;transform-origin:50% 55%}
+  .paper.reveal:not(.visible){opacity:0;transform:translate3d(0,24px,0) rotate(.45deg) scale(.985)}
+  .paper.reveal.visible{animation:paperSettle .72s cubic-bezier(.18,.78,.22,1) both}
+
+  .service-slip.reveal:not(.visible){opacity:0;transform:translate3d(-34px,18px,0) rotate(-1.4deg) scale(.985)}
+  .service-slip:nth-of-type(even).reveal:not(.visible){transform:translate3d(34px,18px,0) rotate(1.4deg) scale(.985)}
+  .service-slip.visible{animation:slipSettle .72s cubic-bezier(.18,.82,.22,1) both;transform:translate3d(var(--drift-x,0),var(--drift-y,0),0) rotate(var(--drift-r,0deg))}
+  .service-slip:nth-of-type(2){animation-delay:.03s}.service-slip:nth-of-type(3){animation-delay:.05s}.service-slip:nth-of-type(4){animation-delay:.07s}.service-slip:nth-of-type(5){animation-delay:.09s}.service-slip:nth-of-type(6){animation-delay:.11s}
+
+  .service-intro .real-menu-logo{opacity:.001;transform:translateY(12px) scale(.91) rotate(-1deg);transition:opacity .7s ease,transform .9s cubic-bezier(.18,.82,.22,1),filter .8s ease}
+  .service-intro.visible .real-menu-logo{opacity:1;transform:translateY(0) scale(1) rotate(0);filter:drop-shadow(0 10px 14px rgba(49,38,24,.06))}
+  .service-intro::after{content:"";display:block;width:0;height:3px;margin:-5px auto 11px;background:var(--motion-red);border-radius:999px;transform:rotate(-1.5deg);opacity:.9;transition:width .9s .25s cubic-bezier(.2,.8,.2,1)}
+  .service-intro.visible::after{width:min(180px,34vw)}
+
+  .service-slip .price strong{display:inline-block;opacity:.45;transform:translateY(5px);filter:blur(1.5px);transition:opacity .45s .24s ease,transform .45s .24s ease,filter .45s .24s ease}
+  .service-slip.visible .price strong{opacity:1;transform:translateY(0);filter:blur(0)}
+
+  .service-slip::before{content:"";position:absolute;z-index:2;width:8px;height:8px;border:2px solid var(--motion-red);border-radius:50%;opacity:0;transform:scale(.2);pointer-events:none}
+  .service-slip:nth-of-type(1)::before,.service-slip:nth-of-type(4)::before{right:12px;bottom:13px}
+  .service-slip:nth-of-type(2)::before,.service-slip:nth-of-type(5)::before{left:14px;top:15px}
+  .service-slip:nth-of-type(3)::before,.service-slip:nth-of-type(6)::before{right:20px;top:18px}
+  .service-slip.visible::before{animation:redPing .55s .38s cubic-bezier(.2,.8,.2,1) both}
+
+  .float-action{transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,filter .28s ease}
+  .float-action:hover,.float-action.is-active{transform:translateX(-4px) rotate(-1.5deg) scale(1.045);box-shadow:0 11px 25px rgba(49,38,24,.16)}
+  .float-action.is-active{filter:saturate(1.08)}
+  .float-action.tap{animation:cactusTap .28s cubic-bezier(.2,.8,.2,1)}
+
+  .site-header nav a{position:relative;transition:color .25s ease,transform .25s ease}
+  .site-header nav a::after{content:"";position:absolute;left:50%;bottom:-2px;width:0;height:2px;background:var(--motion-red);transform:translateX(-50%) rotate(-2deg);transition:width .3s ease}
+  .site-header nav a.is-active::after,.site-header nav a:hover::after{width:100%}
+
+  .closing-couple.reveal:not(.visible){opacity:0;transform:translateY(24px) scale(.94);filter:blur(3px)}
+  .closing-couple.visible{animation:closingRise 1s cubic-bezier(.18,.78,.22,1) both}
+  .closing-paper.reveal:not(.visible){opacity:0;transform:translateY(28px) rotate(.5deg) scale(.98)}
+  .closing-paper.visible{animation:paperSettle .8s .1s cubic-bezier(.18,.78,.22,1) both}
+
+  .quiet-link span{display:inline-block;animation:walkArrow 1.8s ease-in-out infinite}
+  .enquire span{display:inline-block;transition:transform .25s ease}.enquire:hover span{transform:translate(3px,-3px)}
+
+  .journey-meter span{box-shadow:0 0 10px rgba(255,43,39,.22)}
+  .landscape-full{transition:filter .25s linear;filter:saturate(var(--scene-sat,1)) contrast(var(--scene-contrast,1))}
+  .landscape-ghost{transition:opacity .25s linear;opacity:var(--ghost-opacity,.07)}
+}
+
+@keyframes paperSettle{0%{opacity:0;transform:translate3d(0,24px,0) rotate(.55deg) scale(.985)}68%{opacity:1;transform:translate3d(0,-2px,0) rotate(-.12deg) scale(1.002)}100%{opacity:1;transform:none}}
+@keyframes slipSettle{0%{opacity:0}72%{opacity:1}100%{opacity:1}}
+@keyframes redPing{0%{opacity:0;transform:scale(.2)}62%{opacity:.9;transform:scale(1.22)}100%{opacity:.7;transform:scale(1)}}
+@keyframes cactusTap{0%{transform:scale(1)}45%{transform:scale(.92) rotate(1deg)}100%{transform:scale(1)}}
+@keyframes closingRise{0%{opacity:0;transform:translateY(24px) scale(.94);filter:blur(3px)}70%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes walkArrow{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* Touch devices: keep movement tactile rather than hover-led. */
+@media (hover:none){.brand:hover img,.float-action:hover{transform:none}.float-action.is-active{transform:translateX(-2px) scale(1.025)}}
+
+/* Motion is enhancement only; reduced-motion users retain the exact static design. */
+@media (prefers-reduced-motion:reduce){.paper,.service-slip,.real-menu-logo,.closing-couple{animation:none!important;transition:none!important;transform:none!important;filter:none!important}}
