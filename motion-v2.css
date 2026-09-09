@@ -1,5 +1,6 @@
 /* Motion V2 — deliberate, low-amplitude movement layered over the consolidated layout */
 :root{--motion-red:#ff2b27;--motion-paper:#fbf1d9}
+@view-transition{navigation:auto}
 
 @media (prefers-reduced-motion:no-preference){
   .brand img{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s ease;transform-origin:50% 30%}
@@ -48,6 +49,10 @@
   .journey-meter span{box-shadow:0 0 10px rgba(255,43,39,.22)}
   .landscape-full{transition:filter .25s linear;filter:saturate(var(--scene-sat,1)) contrast(var(--scene-contrast,1))}
   .landscape-ghost{transition:opacity .25s linear;opacity:var(--ghost-opacity,.07)}
+
+  .profile-art{animation:profileArtIn .9s .05s cubic-bezier(.18,.78,.22,1) both;view-transition-name:linda-art}
+  .profile-copy{animation:profileCopyIn .78s .14s cubic-bezier(.18,.78,.22,1) both;view-transition-name:linda-copy}
+  .profile-logo{animation:profileLogoIn .6s ease both}
 }
 
 @keyframes paperSettle{0%{opacity:0;transform:translate3d(0,24px,0) rotate(.55deg) scale(.985)}68%{opacity:1;transform:translate3d(0,-2px,0) rotate(-.12deg) scale(1.002)}100%{opacity:1;transform:none}}
@@ -56,9 +61,12 @@
 @keyframes cactusTap{0%{transform:scale(1)}45%{transform:scale(.92) rotate(1deg)}100%{transform:scale(1)}}
 @keyframes closingRise{0%{opacity:0;transform:translateY(24px) scale(.94);filter:blur(3px)}70%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none;filter:blur(0)}}
 @keyframes walkArrow{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@keyframes profileArtIn{0%{opacity:0;transform:translateX(-24px) scale(.97);filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
+@keyframes profileCopyIn{0%{opacity:0;transform:translateX(24px) translateY(8px) rotate(.35deg)}100%{opacity:1;transform:none}}
+@keyframes profileLogoIn{0%{opacity:0;transform:translateY(-8px) scale(.96)}100%{opacity:1;transform:none}}
 
 /* Touch devices: keep movement tactile rather than hover-led. */
 @media (hover:none){.brand:hover img,.float-action:hover{transform:none}.float-action.is-active{transform:translateX(-2px) scale(1.025)}}
 
 /* Motion is enhancement only; reduced-motion users retain the exact static design. */
-@media (prefers-reduced-motion:reduce){.paper,.service-slip,.real-menu-logo,.closing-couple{animation:none!important;transition:none!important;transform:none!important;filter:none!important}}
+@media (prefers-reduced-motion:reduce){.paper,.service-slip,.real-menu-logo,.closing-couple,.profile-art,.profile-copy,.profile-logo{animation:none!important;transition:none!important;transform:none!important;filter:none!important}}
