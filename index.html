@@ -16,7 +16,12 @@
     .home-stories h2{text-align:center;font:600 clamp(30px,4vw,48px)/1.05 "Fraunces",Georgia,serif;margin:0 0 22px}.home-stories h2 span{color:#ff2b27}
     .home-gallery{overflow:hidden;margin:0 0 28px}.home-gallery-track{display:flex;gap:12px;width:max-content;animation:homeMarquee 28s linear infinite}.home-gallery-track img{width:240px;height:160px;object-fit:cover;border:8px solid #fbf1d9;box-shadow:0 6px 16px rgba(0,0,0,.08);filter:saturate(.82)}
     .home-google{display:flex;align-items:center;justify-content:center;gap:16px;width:max-content;max-width:90vw;margin:0 auto;padding:16px 24px;background:#fbf1d9;filter:drop-shadow(0 10px 18px rgba(49,38,24,.08));font:600 11px "DM Mono",monospace}.home-google .g{font:700 36px Arial;color:#4285f4}.home-google strong{font:600 24px "Fraunces",Georgia,serif}.home-google em{font-style:normal;color:#f2a900;letter-spacing:.1em}
+    .intro-paper .kicker .linda-red{color:#ff2b27;font-weight:700}
+    .linda-profile-link{font-size:13px!important;letter-spacing:.09em!important;padding-bottom:4px!important}
+    .service-slip:nth-of-type(2)::before,.service-slip:nth-of-type(5)::before{left:auto!important;right:14px!important;top:15px!important}
+    .closing-paper .enquire{font-size:18px!important;font-weight:650!important;padding:16px 0!important;letter-spacing:.015em!important}
     @keyframes homeMarquee{from{transform:translateX(-28%)}to{transform:translateX(0)}}@media(prefers-reduced-motion:reduce){.home-gallery-track{animation:none}}
+    @media(max-width:760px){.linda-profile-link{font-size:12px!important}.closing-paper .enquire{font-size:15px!important}}
   </style>
 </head>
 <body>
@@ -37,7 +42,7 @@
         <div class="landscape-wash"></div><div class="journey-meter"><span data-meter></span></div>
       </div>
       <div class="journey-content">
-        <section class="chapter chapter-intro" id="about" data-chapter><article class="paper intro-paper reveal"><p class="kicker">LINDA · THE PRICKLY CELEBRANT</p><h1>Ceremonies that feel like the <span class="accent">people</span> they’re for.</h1><p>Weddings, commitments, farewells and life celebrations — written with <span class="accent">warmth</span>, clarity, humour and enough room for the unexpected.</p><a href="services.html" class="quiet-link">Walk the path <span>↓</span></a></article></section>
+        <section class="chapter chapter-intro" id="about" data-chapter><article class="paper intro-paper reveal"><p class="kicker"><span class="linda-red">LINDA</span> · THE PRICKLY CELEBRANT</p><h1>Ceremonies that feel like the <span class="accent">people</span> they’re for.</h1><p>Weddings, commitments, farewells and life celebrations — written with <span class="accent">warmth</span>, clarity, humour and enough room for the unexpected.</p><a href="services.html" class="quiet-link">Walk the path <span>↓</span></a></article></section>
         <section class="chapter chapter-right about-linda" data-chapter><article class="paper story-paper reveal"><a class="kicker linda-profile-link" href="linda.html">MEET LINDA ↗</a><h2>Human first. <span class="accent">Ceremony</span> second.</h2><p>I start with the people, not the template — what matters, what makes you laugh, what needs to be honoured, and what absolutely does not belong in the room.</p></article></section>
         <section class="service-path" id="services" aria-label="Prickly Celebrant services">
           <div class="service-intro reveal"><div class="real-menu-lockup"><img src="assets/prickly-menu.svg?v=20260910-motion2" alt="The Prickly Menu" class="real-menu-logo"></div><p class="service-intro-copy">Pick one thing or stitch a few together. Prices are <span class="accent">indicative starting points</span>; Linda confirms a tailored quote after a chat.</p></div>
