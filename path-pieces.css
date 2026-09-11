@@ -1,0 +1,2 @@
+/* No moving blind or full-width reveal edge. */
+.landscape-reveal{clip-path:none!important;will-change:auto}.landscape-ghost{display:none}.path-sizing-image{opacity:0}.path-piece-scene{position:absolute;left:50%;top:0;pointer-events:none;will-change:transform}.path-piece{position:absolute;inset:0;background:url('assets/02_desert_path.jpeg') center/100% 100% no-repeat;opacity:0;transition:opacity 950ms ease}.path-piece.painted{opacity:1}@media(prefers-reduced-motion:reduce){.path-sizing-image{opacity:1}.path-piece-scene{display:none}.landscape-full{opacity:1}}

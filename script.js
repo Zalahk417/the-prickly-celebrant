@@ -66,6 +66,38 @@ function updateCardDrift() {
   });
 }
 
+// Reveal small areas of the original landscape independently, without a sweeping mask.
+const pathPieces = [];
+let pieceScene;
+if (landscape && !reducedMotion) {
+  pieceScene = document.createElement('div');
+  pieceScene.className = 'path-piece-scene';
+  pieceScene.setAttribute('aria-hidden', 'true');
+  landscape.after(pieceScene);
+  for (let row = 0; row < 10; row++) {
+    for (let col = 0; col < 3; col++) {
+      const piece = document.createElement('div');
+      piece.className = 'path-piece';
+      piece.style.clipPath = `inset(${row * 10}% ${100 - (col + 1) * 100 / 3}% ${90 - row * 10}% ${col * 100 / 3}%)`;
+      piece.style.transitionDelay = `${col === 1 ? 0 : 130 + row % 3 * 70}ms`;
+      pieceScene.append(piece);
+      pathPieces.push({piece, row, col});
+    }
+  }
+  landscape.classList.add('path-sizing-image');
+}
+function updatePathPieces(progress, y, imageTravel) {
+  if (!pieceScene) return;
+  const height = landscape.offsetHeight;
+  pieceScene.style.width = `${landscape.offsetWidth}px`;
+  pieceScene.style.height = `${height}px`;
+  pieceScene.style.transform = `translate3d(-50%, ${y.toFixed(2)}px, 0)`;
+  pathPieces.forEach(({piece, row, col}) => {
+    const threshold = Math.max(0, (row * height / 10 - window.innerHeight * .84) / Math.max(1, imageTravel));
+    if (progress >= threshold || progress > .97) piece.classList.add('painted');
+  });
+}
+
 function updateJourney() {
   if (!journey || !landscape) return;
 
@@ -81,10 +113,7 @@ function updateJourney() {
     landscape.style.transform = `translate3d(-50%, ${y.toFixed(2)}px, 0)`;
     if (ghost) ghost.style.transform = `translate3d(-50%, ${(y * 0.94).toFixed(2)}px, 0)`;
 
-    if (revealLayer) {
-      const revealed = clamp(0.50 + progress * 0.58);
-      revealLayer.style.clipPath = `inset(0 0 ${((1 - revealed) * 100).toFixed(2)}% 0)`;
-    }
+    updatePathPieces(progress, y, imageTravel);
 
     const sceneSat = 0.96 + progress * 0.08;
     const sceneContrast = 0.99 + progress * 0.035;
@@ -136,3 +165,4 @@ landscape?.addEventListener('load', updateJourney);
 window.addEventListener('scroll', requestJourneyUpdate, { passive: true });
 window.addEventListener('resize', requestJourneyUpdate);
 updateJourney();
+
