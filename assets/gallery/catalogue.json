@@ -1,0 +1,56 @@
+{
+  "events": [],
+  "portraits": [
+    {
+      "src": "assets/gallery/portraits/paul-linda.webp",
+      "alt": "Illustrated portrait of Paul-Michael and Linda",
+      "published": true
+    }
+  ],
+  "artwork": [
+    {
+      "src": "assets/03_cactus_bowl.jpeg",
+      "alt": "Prickly Celebrant cactus illustration",
+      "published": true
+    },
+    {
+      "src": "assets/04_cactus_candles.jpeg",
+      "alt": "Prickly Celebrant cactus illustration",
+      "published": true
+    },
+    {
+      "src": "assets/06_cactus_collection.jpeg",
+      "alt": "Prickly Celebrant cactus illustration",
+      "published": true
+    },
+    {
+      "src": "assets/08_cactus_garden.jpeg",
+      "alt": "Prickly Celebrant cactus illustration",
+      "published": true
+    },
+    {
+      "src": "assets/01_infinity_couple.jpeg",
+      "alt": "Prickly Celebrant cactus illustration",
+      "published": true
+    }
+  ],
+  "reviews": [],
+  "sampleReviews": [
+    {
+      "category": "WEDDING",
+      "text": "A ceremony that feels like you \u2014 warm, personal and full of heart."
+    },
+    {
+      "category": "NAMING DAY",
+      "text": "A meaningful welcome, surrounded by the people who matter most."
+    },
+    {
+      "category": "MEMORIAL",
+      "text": "Time to remember a life, share stories and say goodbye with care."
+    },
+    {
+      "category": "VOW RENEWAL",
+      "text": "Your shared journey, your people, and everything still to come."
+    }
+  ]
+}
